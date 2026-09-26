@@ -2,55 +2,73 @@
   "photos": [
     {
       "image": "images/stage/concert-church.jpg",
-      "caption": "New Artist Recital · Curtain call"
-    },
-    {
-      "image": "images/stage/salon-recital.jpg",
-      "caption": "After the salon recital"
+      "caption": "New Artist Recital · Curtain call",
+      "date": "2026-09-25"
     },
     {
       "image": "images/stage/backstage.jpg",
-      "caption": "Backstage"
+      "caption": "Backstage",
+      "date": "2026-09-25"
     },
     {
-      "image": "images/life/ava-caps.jpg",
-      "caption": "New season at AVA"
-    },
-    {
-      "image": "images/life/lobby.jpg",
-      "caption": "Night at the theater"
-    },
-    {
-      "image": "images/life/fountain.jpg",
-      "caption": "Afternoon by the fountain"
+      "image": "images/stage/salon-recital.jpg",
+      "caption": "After the salon recital",
+      "date": "2026-09-14"
     },
     {
       "image": "images/life/mirror.jpg",
-      "caption": "Suit up"
+      "caption": "Suit up",
+      "date": "2026-09-14"
+    },
+    {
+      "image": "images/life/fountain.jpg",
+      "caption": "Afternoon by the fountain",
+      "date": "2026-09-11"
+    },
+    {
+      "image": "images/life/ava-caps.jpg",
+      "caption": "New season at AVA",
+      "date": "2026-09-10"
+    },
+    {
+      "image": "images/life/lobby.jpg",
+      "caption": "Night at the theater",
+      "date": "2026-09-10"
     },
     {
       "image": "images/life/dinner-with-friends.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-09-07"
     },
     {
       "image": "images/life/family.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-08-30"
     },
     {
       "image": "images/life/hanok.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-08-28"
     },
     {
       "image": "images/life/sunset-terrace.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-08-05"
+    },
+    {
+      "image": "images/stage/costume-stage.jpg",
+      "caption": "",
+      "date": "2026-08-01"
     },
     {
       "image": "images/life/costume-fitting.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-07-29"
     },
     {
       "image": "images/life/studio-visit.jpg",
-      "caption": ""
+      "caption": "",
+      "date": "2026-07-22"
     }
   ]
 }

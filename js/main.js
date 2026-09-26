@@ -23,7 +23,9 @@
   const PERFORMANCES = perfData.performances || [];
   const ROLES = rolesData.roles || [];
   const AWARDS = awardsData.awards || [];
-  const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption }));
+  // 갤러리: 날짜 최신순 (날짜 없는 사진은 맨 뒤)
+  const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption, date: g.date || "" }))
+    .sort((a, b) => b.date.localeCompare(a.date));
   const MEDIA = (mediaData.videos || []).filter((v) => v.video || ytId(v.youtube)).map((v, i) => ({ ...v, _i: i, yt: ytId(v.youtube), year: String(v.date || "").slice(0, 4) }));
 
   /* ── BACKGROUND MUSIC ────────────── */
@@ -238,7 +240,17 @@
   });
 
   /* ── GALLERY (Stage) ─────────────── */
-  $("#galleryGrid").innerHTML = GALLERY.map((g, i) => `<figure data-i="${i}"><img loading="lazy" src="${esc(g.src)}" alt="${esc(g.caption || "Photo")}">${g.caption ? `<figcaption>${esc(g.caption)}</figcaption>` : ""}</figure>`).join("");
+  // 최신 사진이 맨 윗줄부터 보이도록 왼→오 순서로 열에 나눠 담기 (벽돌형 배치 유지)
+  const galleryCols = () => (innerWidth <= 560 ? 1 : innerWidth <= 960 ? 2 : 3);
+  let galleryN = 0;
+  const renderGallery = () => {
+    const n = galleryCols(); if (n === galleryN) return; galleryN = n;
+    const cols = Array.from({ length: n }, () => []);
+    GALLERY.forEach((g, i) => cols[i % n].push(`<figure data-i="${i}"><img loading="lazy" src="${esc(g.src)}" alt="${esc(g.caption || "Photo")}">${g.caption ? `<figcaption>${esc(g.caption)}</figcaption>` : ""}</figure>`));
+    $("#galleryGrid").innerHTML = cols.map((c) => `<div class="g-col">${c.join("")}</div>`).join("");
+  };
+  renderGallery();
+  addEventListener("resize", renderGallery);
   const pModal = $("#photoModal");
   let lbList = GALLERY, cur = 0;
   const showPhoto = (i) => { cur = (i + lbList.length) % lbList.length; $("#lightboxImg").src = lbList[cur].src; $("#lightboxCap").textContent = lbList[cur].caption || ""; };
