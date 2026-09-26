@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="gated">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=202609261632">
+  <link rel="stylesheet" href="css/style.css?v=202609261634">
 </head>
 <body>
+  <!-- 입장 화면: 음악 자동재생이 막힌 브라우저에서만 Enter 버튼이 보임 -->
+  <div class="gate" id="gate" aria-live="polite">
+    <div class="gate-inner">
+      <p class="gate-kicker">Baritone</p>
+      <p class="gate-name">Junseok Hwang</p>
+      <button class="gate-enter" id="gateEnter">Enter</button>
+      <p class="gate-note">&#9834; with music</p>
+    </div>
+  </div>
+  <noscript><style>.gate{display:none}</style></noscript>
 
   <header class="nav" id="nav">
     <a href="#top" class="nav-logo">Junseok Hwang</a>
@@ -177,7 +187,7 @@
     <button class="modal-nav next" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=202609261632"></script>
-  <script src="js/birthday.js?v=202609261632"></script>
+  <script src="js/main.js?v=202609261634"></script>
+  <script src="js/birthday.js?v=202609261634"></script>
 </body>
 </html>

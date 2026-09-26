@@ -1,14 +1,16 @@
 /*
- * 9월 29일(준석이 생일)이 있는 주(9월 26일~10월 2일)에 접속하면 풍선 + 폭죽 + "Happy Birthday!"
+ * 9월 29일(준석이 생일)로 끝나는 일주일(9월 23일~29일) 동안 접속하면 풍선 + 폭죽 + "Happy Birthday!"
  * 미리보기: 주소 뒤에 ?birthday=1
  */
 (function () {
   const now = new Date();
   const force = new URLSearchParams(location.search).has("birthday");
-  // 생일 주간: 생일(9/29) 앞뒤 3일 포함 7일간 = 9월 26일 ~ 10월 2일
+  // 생일 주간: 생일(9/29)을 마지막 날로 하는 7일 = 9월 23일 ~ 9월 29일
   const y = now.getFullYear(), today = new Date(y, now.getMonth(), now.getDate());
-  const inWeek = today >= new Date(y, 8, 26) && today <= new Date(y, 9, 2);
+  const inWeek = today >= new Date(y, 8, 23) && today <= new Date(y, 8, 29);
   if (!force && !inWeek) return;
+  (window.siteEntered || Promise.resolve()).then(run);
+  function run() {
 
   const reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -135,4 +137,5 @@
   requestAnimationFrame(() => setTimeout(() => msg.classList.add("show"), 400));
   setTimeout(close, 9000);
   setTimeout(() => layer.remove(), 16000);
+  }
 })();
