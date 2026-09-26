@@ -1,7 +1,32 @@
 {
   "photos": [
-    { "image": "images/stage/concert-church.jpg", "caption": "Curtain call" },
-    { "image": "images/stage/salon-recital.jpg", "caption": "After the salon recital" },
-    { "image": "images/stage/backstage.jpg", "caption": "Backstage" }
+    {
+      "image": "images/stage/concert-church.jpg",
+      "caption": "Curtain call"
+    },
+    {
+      "image": "images/stage/salon-recital.jpg",
+      "caption": "After the salon recital"
+    },
+    {
+      "image": "images/stage/backstage.jpg",
+      "caption": "Backstage"
+    },
+    {
+      "image": "images/life/ava-caps.jpg",
+      "caption": "New season at AVA"
+    },
+    {
+      "image": "images/life/lobby.jpg",
+      "caption": "Night at the theater"
+    },
+    {
+      "image": "images/life/fountain.jpg",
+      "caption": "Afternoon by the fountain"
+    },
+    {
+      "image": "images/life/mirror.jpg",
+      "caption": "Suit up"
+    }
   ]
 }

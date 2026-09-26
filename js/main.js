@@ -9,15 +9,15 @@
   const MONTHS_FULL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const demo = new URLSearchParams(location.search).has("demo");
   const load = (f) => fetch(`content/${f}.json`, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
-  const [SITE, perfData, rolesData, awardsData, TRAINING, videoData, galleryData, stageData, lifeData] = await Promise.all(
-    ["site", demo ? "demo-performances" : "performances", "roles", "awards", "training", "videos", "gallery", "stage", "life"].map(load)
+  const [SITE, perfData, rolesData, awardsData, TRAINING, videoData, galleryData, stageData] = await Promise.all(
+    ["site", demo ? "demo-performances" : "performances", "roles", "awards", "training", "videos", "gallery", "stage"].map(load)
   );
   const path = (p) => String(p || "").replace(/^\/+/, "");
   const ytId = (u) => { const m = String(u || "").match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([\w-]{11})/); return m ? m[1] : ""; };
   const parse = (d) => { const [y, m, dd] = String(d).split("-").map(Number); return new Date(y, (m || 1) - 1, dd || 1); };
   const fmtDate = (d) => { if (!d) return ""; const x = parse(d); return `${MONTHS_FULL[x.getMonth()]} ${x.getDate()}, ${x.getFullYear()}`; };
   const pad = (n) => String(n).padStart(2, "0");
-  const key = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const dotDate = (d) => String(d || "").trim().split("-").filter(Boolean).map((x, i) => (i ? pad(+x) : x)).join(". ");
 
   const PERFORMANCES = perfData.performances || [];
   const ROLES = rolesData.roles || [];
@@ -25,7 +25,6 @@
   const VIDEOS = (videoData.videos || []).filter((v) => ytId(v.url)).map((v) => ({ ...v, id: ytId(v.url), year: Number(v.year) }));
   const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption }));
   const STAGE = (stageData.performances || []).filter((p) => p.title || p.video || p.youtube);
-  const LIFE = (lifeData.posts || []).filter((p) => p.image);
 
   /* ── BACKGROUND MUSIC ────────────── */
   // site.json 의 bgm 에 음원 경로를 넣으면 켜집니다. 영상 재생 시 자동으로 멈춥니다.
@@ -98,42 +97,6 @@
   const isPast = (p) => parse(p.endDate || p.date) < today;
   const upcoming = perfs.filter((p) => !isPast(p)).sort((a, b) => parse(a.date) - parse(b.date));
   const past = perfs.filter(isPast).sort((a, b) => parse(b.date) - parse(a.date));
-
-  // 날짜 → 공연 목록 (여러 날 공연은 모든 날짜에 점)
-  const byDay = {};
-  perfs.forEach((p) => {
-    const d = parse(p.date), end = p.endDate ? parse(p.endDate) : d;
-    for (let x = new Date(d); x <= end; x.setDate(x.getDate() + 1)) (byDay[key(x)] = byDay[key(x)] || []).push(p);
-  });
-
-  let calMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-  const renderCal = () => {
-    const y = calMonth.getFullYear(), m = calMonth.getMonth();
-    $("#calTitle").innerHTML = `${MONTHS_FULL[m]} <span>${y}</span>`;
-    const first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
-    let html = "";
-    for (let i = 0; i < first; i++) html += `<span class="cal-day empty"></span>`;
-    for (let d = 1; d <= days; d++) {
-      const dt = new Date(y, m, d), k = key(dt), ev = byDay[k];
-      const cls = ["cal-day", ev ? "has" : "", k === key(today) ? "today" : "", dt < today ? "past" : ""].filter(Boolean).join(" ");
-      html += ev
-        ? `<button class="${cls}" data-day="${k}" title="${esc(ev.map((e) => e.title).join(", "))}"><span>${d}</span><i class="dot"></i></button>`
-        : `<span class="${cls}"><span>${d}</span></span>`;
-    }
-    $("#calDays").innerHTML = html;
-  };
-  $("#calPrev").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() - 1); renderCal(); });
-  $("#calNext").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() + 1); renderCal(); });
-  $("#calDays").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-day]"); if (!b) return;
-    const p = byDay[b.dataset.day][0];
-    if (isPast(p)) $("#pastWrap").open = true;
-    const card = document.getElementById("ev-" + p._i);
-    if (!card) return;
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
-  });
-  renderCal();
 
   const icsStamp = (p, end) => {
     const d = parse(end && p.endDate ? p.endDate : p.date);
@@ -235,12 +198,11 @@
       <article class="stage-card reveal ${vertical ? "is-vertical" : ""}">
         ${media}
         <div class="stage-info">
-          ${p.date || place ? `<p class="stage-meta">${esc([fmtDate(p.date), place].filter(Boolean).join(" · "))}</p>` : ""}
           <h3 class="stage-title">${esc(p.title)}</h3>
+          ${p.date || place ? `<p class="stage-meta">${esc([dotDate(p.date), place].filter(Boolean).join("  ·  "))}</p>` : ""}
           ${p.description ? `<p class="stage-desc">${esc(p.description)}</p>` : ""}
           ${program.length ? `<div class="stage-block"><h4>Program</h4><ul>${program.map((x) => `<li><em>${esc(x.title)}</em>${x.composer ? ` <span>— ${esc(x.composer)}</span>` : ""}</li>`).join("")}</ul></div>` : ""}
           ${performers.length ? `<div class="stage-block"><h4>With</h4><ul>${performers.map((x) => `<li>${esc(x.name)}${x.role ? ` <span>· ${esc(x.role)}</span>` : ""}</li>`).join("")}</ul></div>` : ""}
-          ${p.photo ? `<figure class="stage-photo" data-photo="${esc(path(p.photo))}"><img loading="lazy" src="${esc(path(p.photo))}" alt="${esc(p.title)}"></figure>` : ""}
         </div>
       </article>`;
   };
@@ -286,7 +248,6 @@
   const showPhoto = (i) => { cur = (i + lbList.length) % lbList.length; $("#lightboxImg").src = lbList[cur].src; $("#lightboxCap").textContent = lbList[cur].caption || ""; };
   const openLightbox = (list, i) => { lbList = list; showPhoto(i); pModal.hidden = false; document.body.style.overflow = "hidden"; $(".modal-nav.prev").hidden = $(".modal-nav.next").hidden = list.length < 2; };
   $("#galleryGrid").addEventListener("click", (e) => { const f = e.target.closest("figure"); if (f) openLightbox(GALLERY, +f.dataset.i); });
-  document.addEventListener("click", (e) => { const f = e.target.closest("[data-photo]"); if (f) openLightbox([{ src: f.dataset.photo, caption: "" }], 0); });
   $(".modal-nav.prev").addEventListener("click", () => showPhoto(cur - 1));
   $(".modal-nav.next").addEventListener("click", () => showPhoto(cur + 1));
   document.querySelectorAll(".modal").forEach((m) => m.addEventListener("click", (e) => {
@@ -298,44 +259,6 @@
     if (!pModal.hidden && e.key === "ArrowRight") showPhoto(cur + 1);
   });
 
-  /* ── LIFE (스토리 형식, 옆으로 넘기기) ── */
-  const lifeSection = $("#life");
-  if (!LIFE.length) {
-    lifeSection.hidden = true;
-    const a = document.querySelector('.nav-links a[href="#life"]'); if (a) a.hidden = true;
-  } else {
-    const track = $("#storyTrack");
-    track.innerHTML = LIFE.map((p) => {
-      const line = [p.with ? `with ${esc(p.with)}` : "", p.place ? esc(p.place) : ""].filter(Boolean).join(" · ");
-      return `
-        <figure class="slide">
-          <div class="slide-img" style="background-image:url('${esc(path(p.image))}')"><img src="${esc(path(p.image))}" alt="${esc(p.caption || "")}" loading="lazy"></div>
-          <figcaption>
-            ${p.caption ? `<p class="slide-cap">${esc(p.caption)}</p>` : ""}
-            ${line ? `<p class="slide-line">${line}</p>` : ""}
-            ${p.date ? `<p class="slide-date">${esc(fmtDate(p.date))}</p>` : ""}
-          </figcaption>
-        </figure>`;
-    }).join("");
-    $("#storyBars").innerHTML = LIFE.map(() => `<span><i></i></span>`).join("");
-    const bars = [...document.querySelectorAll("#storyBars span")];
-    let idx = 0;
-    const setIdx = (i) => {
-      idx = Math.max(0, Math.min(LIFE.length - 1, i));
-      bars.forEach((b, j) => b.classList.toggle("done", j <= idx));
-      $("#storyCount").textContent = `${idx + 1} / ${LIFE.length}`;
-      $("#storyPrev").hidden = idx === 0;
-      $("#storyNext").hidden = idx === LIFE.length - 1;
-    };
-    const go = (i) => { track.scrollTo({ left: track.clientWidth * i, behavior: "smooth" }); };
-    $("#storyPrev").addEventListener("click", () => go(idx - 1));
-    $("#storyNext").addEventListener("click", () => go(idx + 1));
-    let t;
-    track.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => setIdx(Math.round(track.scrollLeft / track.clientWidth)), 60); }, { passive: true });
-    bars.forEach((b, j) => b.addEventListener("click", () => go(j)));
-    setIdx(0);
-  }
-
   /* ── CONTACT / FOOTER ────────────── */
   const em = $("#contactEmail");
   em.href = "mailto:" + SITE.email;
@@ -345,5 +268,5 @@
 
   /* ── REVEAL ON SCROLL ────────────── */
   const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: 0.08 });
-  document.querySelectorAll(".section h2, .bio, .training, .reveal, .gallery, .table-wrap, .calendar, .story").forEach((el) => { el.classList.add("reveal"); io.observe(el); });
+  document.querySelectorAll(".section h2, .bio, .training, .reveal, .gallery, .table-wrap").forEach((el) => { el.classList.add("reveal"); io.observe(el); });
 })();

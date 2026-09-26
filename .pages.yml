@@ -42,7 +42,7 @@ content:
           - { name: note, label: "메모", type: string }
 
   - name: stage
-    label: "공연 영상 (Media · 공연 단위)"
+    label: "공연 영상 (Media · 영상만, 가로 영상)"
     type: file
     path: content/stage.json
     format: json
@@ -58,7 +58,7 @@ content:
             options:
               values: ["Performance", "Studio"]
           - { name: title, label: "공연 제목", type: string, required: true }
-          - { name: date, label: "날짜", type: date }
+          - { name: date, label: "날짜 (예: 2026-05 또는 2026-05-14)", type: string }
           - { name: venue, label: "공연 장소", type: string }
           - { name: city, label: "도시", type: string }
           - { name: description, label: "설명", type: text }
@@ -76,32 +76,9 @@ content:
             fields:
               - { name: name, label: "이름", type: string }
               - { name: role, label: "역할 (Piano, Soprano 등)", type: string }
-          - { name: video, label: "영상 파일 (50MB 이하 권장)", type: file, options: { media: videos } }
+          - { name: video, label: "영상 파일 (가로 영상만, 50MB 이하 권장)", type: file, options: { media: videos } }
           - { name: youtube, label: "또는 YouTube 링크 (영상 파일 대신)", type: string }
-          - name: orientation
-            label: "영상 방향"
-            type: select
-            options:
-              values: ["horizontal", "vertical"]
           - { name: poster, label: "영상 썸네일 이미지", type: image, options: { media: images } }
-          - { name: photo, label: "공연 사진 1장", type: image, options: { media: images } }
-
-  - name: life
-    label: "Life (개인 사진 · 스토리)"
-    type: file
-    path: content/life.json
-    format: json
-    fields:
-      - name: posts
-        label: "사진 (위에서부터 순서대로 넘겨보기)"
-        type: object
-        list: true
-        fields:
-          - { name: image, label: "사진", type: image, required: true, options: { media: images } }
-          - { name: caption, label: "무엇을 (한 줄)", type: string }
-          - { name: with, label: "누구랑", type: string }
-          - { name: place, label: "어디서", type: string }
-          - { name: date, label: "날짜", type: date }
 
   - name: videos
     label: "YouTube 녹화 목록 (Recordings)"
@@ -130,7 +107,7 @@ content:
           - { name: featured, label: "대표 영상으로 표시", type: boolean }
 
   - name: gallery
-    label: "무대 사진 (Gallery · 공연당 1장)"
+    label: "사진 (Gallery · 같은 배경은 1장만)"
     type: file
     path: content/gallery.json
     format: json
