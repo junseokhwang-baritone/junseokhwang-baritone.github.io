@@ -42,19 +42,25 @@ content:
           - { name: note, label: "메모", type: string }
 
   - name: media
-    label: "영상 (Media · 연도별 자동 분류)"
+    label: "영상 (Media · Concert / Studio / Practice)"
     type: file
     path: content/media.json
     format: json
     fields:
       - name: videos
-        label: "영상 (같은 연도 안에서 위에서부터 순서대로 표시)"
+        label: "영상"
         type: object
         list: true
         fields:
+          - name: category
+            label: "분류 (탭)"
+            type: select
+            required: true
+            options:
+              values: ["Concert", "Studio", "Practice"]
           - { name: title, label: "제목 (곡명 또는 공연명)", type: string, required: true }
           - { name: subtitle, label: "부제 (작품 · 작곡가)", type: string }
-          - { name: date, label: "날짜 (예: 2026, 2026-05, 2026-05-14) — 연도 탭 분류 기준", type: string, required: true }
+          - { name: date, label: "날짜 (예: 2026, 2026-05, 2026-05-14) — 탭 안에서 최신순 정렬", type: string, required: true }
           - { name: venue, label: "공연 장소", type: string }
           - { name: city, label: "도시 / 나라", type: string }
           - { name: description, label: "설명", type: text }

@@ -185,8 +185,10 @@
 
   /* ── MEDIA: 연도별 영상 ────────── */
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
-  const years = [...new Set(MEDIA.map((v) => v.year).filter(Boolean))].sort((a, b) => b - a);
-  let curYear = years[0] || "All";
+  const CATS = ["Concert", "Studio", "Practice"];
+  const catOf = (v) => (CATS.includes(v.category) ? v.category : "Practice");
+  const cats = CATS.filter((c) => MEDIA.some((v) => catOf(v) === c));
+  let curCat = cats[0];
   const card = (v) => {
     const img = v.poster ? path(v.poster) : v.yt ? thumb(v.yt) : "";
     const place = [v.venue, v.city].filter(Boolean).join(", ");
@@ -199,12 +201,12 @@
       </article>`;
   };
   const renderMedia = () => {
-    $("#yearFilter").innerHTML = [...years, "All"].map((y) => `<button class="${y === curYear ? "on" : ""}" data-year="${y}">${y}</button>`).join("");
-    const list = MEDIA.filter((v) => curYear === "All" || v.year === curYear);
+    $("#yearFilter").innerHTML = cats.map((c) => `<button class="${c === curCat ? "on" : ""}" data-cat="${c}">${c}</button>`).join("");
+    const list = MEDIA.filter((v) => catOf(v) === curCat).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
     $("#mediaGrid").innerHTML = list.map(card).join("");
   };
   renderMedia();
-  $("#yearFilter").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; curYear = b.dataset.year; renderMedia(); });
+  $("#yearFilter").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; curCat = b.dataset.cat; renderMedia(); });
 
   const vModal = $("#videoModal"), frame = $("#modalFrame"), mVideo = $("#modalVideo");
   const openMedia = (v) => {
