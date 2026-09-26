@@ -58,7 +58,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; background: var(--black); color: var(--white); }
 .hero-img {
   position: absolute; inset: 0;
-  background: url("../images/hero-sharp.jpg") 78% 30% / cover no-repeat;
+  background: url("../images/hero-frame.jpg") 78% 30% / cover no-repeat;
   filter: grayscale(1) contrast(1.08) brightness(.8);
   transform: scale(1.04);
   animation: heroZoom 14s ease-out forwards;
