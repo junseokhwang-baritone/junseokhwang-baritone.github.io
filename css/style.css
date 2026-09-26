@@ -326,15 +326,3 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 @keyframes bgmHint { 0%, 100% { box-shadow: 0 1px 6px rgba(0,0,0,.12); } 50% { box-shadow: 0 0 0 7px rgba(0,0,0,.08); } }
 .media-more { margin-top: 56px; cursor: pointer; background: none; }
 .media-more[hidden] { display: none; }
-
-/* ── ENTRY GATE ──────────────────── */
-html.gated, html.gated body { overflow: hidden; }
-.gate { position: fixed; inset: 0; z-index: 300; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; transition: opacity .8s ease; }
-.gate.out { opacity: 0; pointer-events: none; }
-.gate-kicker { font-size: .72rem; letter-spacing: .5em; text-transform: uppercase; opacity: .7; margin-bottom: 14px; }
-.gate-name { font-family: var(--serif); font-size: clamp(2.6rem, 9vw, 5rem); line-height: 1; }
-.gate-enter, .gate-note { opacity: 0; visibility: hidden; transition: opacity .6s ease; }
-.gate.ask .gate-enter, .gate.ask .gate-note { opacity: 1; visibility: visible; }
-.gate-enter { margin-top: 40px; padding: 14px 44px; border: 1px solid rgba(255,255,255,.7); color: var(--white); font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; transition: background .25s, color .25s, opacity .6s; }
-.gate-enter:hover, .gate-enter:focus-visible { background: var(--white); color: var(--black); outline: none; }
-.gate-note { margin-top: 16px; font-size: .68rem; letter-spacing: .2em; color: #888; }

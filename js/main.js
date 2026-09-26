@@ -2,10 +2,7 @@
  * 콘텐츠는 content/*.json 에서 불러옵니다.
  * 관리자는 Pages CMS(https://app.pagescms.org)에서 GitHub 계정으로 로그인해 편집합니다.
  */
-// 입장 화면(Enter)이 닫힐 때 resolve — 생일 효과 등은 이후에 시작
-window.siteEntered = new Promise((r) => (window.__enterSite = r));
-// 안전장치: 무슨 이유로든 입장 화면이 5초 넘게 멈춰 있으면 자동으로 닫기
-setTimeout(() => { const g = document.getElementById("gate"); if (g && !g.classList.contains("ask") && !g.classList.contains("out")) { g.remove(); document.documentElement.classList.remove("gated"); window.__enterSite(); } }, 5000);
+window.siteEntered = Promise.resolve();
 (async function () {
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -55,35 +52,20 @@ setTimeout(() => { const g = document.getElementById("gate"); if (g && !g.classL
       bgm.wanted ? bgm.play() : bgm.el.pause();
     });
     // 브라우저는 사용자 동작 전 자동재생을 막으므로, 첫 클릭/터치/키 입력 때 시작
+    const TRIGGERS = ["pointerdown", "pointerup", "touchstart", "touchend", "mousedown", "click", "keydown"];
+    const stopKick = () => TRIGGERS.forEach((t) => document.removeEventListener(t, kick, true));
     const kick = (e) => {
+      if (!bgm.wanted || !bgm.el.paused) return stopKick();
       if (e.target.closest && e.target.closest("#bgmToggle, [data-media], video")) return;
-      if (bgm.wanted && !anyVideoPlaying()) bgm.play();
-      ["pointerdown", "touchend", "keydown"].forEach((t) => document.removeEventListener(t, kick, true));
+      if (anyVideoPlaying()) return;
+      bgm.el.play().then(stopKick).catch(() => {}); // 실패하면 다음 동작에서 다시 시도
     };
-    ["pointerdown", "touchend", "keydown"].forEach((t) => document.addEventListener(t, kick, true));
+    TRIGGERS.forEach((t) => document.addEventListener(t, kick, true));
     bgm.el.addEventListener("play", () => bgmBtn.classList.remove("hint"));
   }
 
-  /* ── ENTRY GATE ──────────────────── */
-  // 접속하자마자 음악 자동 재생 시도. 브라우저가 막으면(휴대폰·사파리 등) Enter 화면을 띄워
-  // 방문자가 한 번 누르는 순간 음악이 시작되도록 함. 허용되면 입장 화면 없이 바로 들어감.
-  const gate = $("#gate");
-  const openSite = () => {
-    gate.classList.add("out");
-    document.documentElement.classList.remove("gated");
-    setTimeout(() => gate.remove(), 900);
-    window.__enterSite();
-  };
-  if (!bgm.el || !bgm.wanted) openSite();
-  else {
-    const forceGate = new URLSearchParams(location.search).has("enter"); // 미리보기용: ?enter=1
-    (forceGate ? Promise.reject() : bgm.el.play()).then(openSite).catch(() => {
-      gate.classList.add("ask");
-      const go = () => { bgm.play(); openSite(); };
-      $("#gateEnter").addEventListener("click", go);
-      $("#gateEnter").focus();
-    });
-  }
+  // 접속하자마자 자동 재생 시도. 브라우저가 막으면 첫 클릭/터치/키 입력 때 바로 재생 (버튼이 살짝 깜빡임)
+  if (bgm.el && bgm.wanted) bgm.el.play().catch(() => bgmBtn.classList.add("hint"));
   const anyVideoPlaying = () => [...document.querySelectorAll("video")].some((v) => !v.paused) || !$("#videoModal").hidden;
   const pauseBgm = () => { if (bgm.el) bgm.el.pause(); };
   const resumeBgm = () => { if (bgm.el && bgm.wanted && !anyVideoPlaying()) bgm.play(); };
