@@ -20,7 +20,7 @@
       "poster": "images/posters/concert-a.jpg"
     },
     {
-      "category": "Concert",
+      "category": "Studio",
       "title": "House Concert",
       "subtitle": "",
       "date": "2026-08",
@@ -34,7 +34,7 @@
       "poster": "images/posters/20260816_104542-thumb.jpg"
     },
     {
-      "category": "Concert",
+      "category": "Studio",
       "title": "House Concert",
       "subtitle": "",
       "date": "2026-08",
@@ -76,7 +76,7 @@
       "poster": "images/posters/20260809_045056-thumb.jpg"
     },
     {
-      "category": "Concert",
+      "category": "Studio",
       "title": "Pavilion Recital",
       "subtitle": "",
       "date": "2026-07",
@@ -90,7 +90,7 @@
       "poster": "images/posters/20260710_065736.jpg"
     },
     {
-      "category": "Concert",
+      "category": "Studio",
       "title": "House Concert",
       "subtitle": "",
       "date": "2026-06",
@@ -119,25 +119,6 @@
     },
     {
       "category": "Studio",
-      "title": "Starbuck's Soliloquy",
-      "subtitle": "Moby-Dick · Heggie",
-      "date": "2026-01",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [
-        {
-          "name": "Soojin Jeong",
-          "role": "Piano"
-        }
-      ],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=5mwyhvcs4U8",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
       "title": "Studio Session",
       "subtitle": "",
       "date": "2026",
@@ -149,39 +130,6 @@
       "video": "videos/studio-c.mp4",
       "youtube": "",
       "poster": "images/posters/studio-c-thumb.jpg"
-    },
-    {
-      "category": "Studio",
-      "title": "Largo al factotum",
-      "subtitle": "Il Barbiere di Siviglia · Rossini",
-      "date": "2025-11",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [
-        {
-          "name": "Soojin Jeong",
-          "role": "Piano"
-        }
-      ],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=gccNThEr1HE",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
-      "title": "Cruda, funesta smania",
-      "subtitle": "Lucia di Lammermoor · Donizetti",
-      "date": "2025-10",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=YJM9VqZ1kY0",
-      "poster": ""
     }
   ]
 }

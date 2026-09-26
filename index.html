@@ -24,7 +24,7 @@
   <script>
     /* 최신 버전 확인: 브라우저에 저장된 예전 페이지면 자동으로 새로 불러옴 (주소는 그대로 유지) */
     (function () {
-      var PAGE_VERSION = "20260926175629";
+      var PAGE_VERSION = "20260926175915";
       try {
         var u = new URL(location.href);
         if (u.searchParams.has("_v")) { u.searchParams.delete("_v"); history.replaceState(null, "", u.pathname + (u.search || "") + u.hash); }
@@ -37,7 +37,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=20260926175629">
+  <link rel="stylesheet" href="css/style.css?v=20260926175915">
 </head>
 <body>
 
@@ -207,7 +207,7 @@
     <button class="modal-nav next" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260926175629"></script>
-  <script src="js/birthday.js?v=20260926175629"></script>
+  <script src="js/main.js?v=20260926175915"></script>
+  <script src="js/birthday.js?v=20260926175915"></script>
 </body>
 </html>
