@@ -2,9 +2,21 @@
 # 이 저장소에 쓰기 권한(Collaborator)이 있는 사람만 편집·저장할 수 있습니다.
 
 media:
-  input: images
-  output: images
-  extensions: [jpg, jpeg, png, webp, gif]
+  - name: images
+    label: "사진"
+    input: images
+    output: images
+    extensions: [jpg, jpeg, png, webp, gif]
+  - name: videos
+    label: "영상 파일"
+    input: videos
+    output: videos
+    extensions: [mp4, mov, m4v]
+  - name: audio
+    label: "음원 (배경음악)"
+    input: audio
+    output: audio
+    extensions: [mp3, m4a, aac]
 
 content:
   - name: performances
@@ -29,8 +41,70 @@ content:
           - { name: ticketUrl, label: "티켓 예매 링크", type: string }
           - { name: note, label: "메모", type: string }
 
+  - name: stage
+    label: "공연 영상 (Media · 공연 단위)"
+    type: file
+    path: content/stage.json
+    format: json
+    fields:
+      - name: performances
+        label: "공연 (위에서부터 순서대로 표시)"
+        type: object
+        list: true
+        fields:
+          - name: section
+            label: "구분"
+            type: select
+            options:
+              values: ["Performance", "Studio"]
+          - { name: title, label: "공연 제목", type: string, required: true }
+          - { name: date, label: "날짜", type: date }
+          - { name: venue, label: "공연 장소", type: string }
+          - { name: city, label: "도시", type: string }
+          - { name: description, label: "설명", type: text }
+          - name: program
+            label: "곡 목록"
+            type: object
+            list: true
+            fields:
+              - { name: title, label: "곡 제목", type: string }
+              - { name: composer, label: "작곡가 / 작품", type: string }
+          - name: performers
+            label: "함께한 퍼포머"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "이름", type: string }
+              - { name: role, label: "역할 (Piano, Soprano 등)", type: string }
+          - { name: video, label: "영상 파일 (50MB 이하 권장)", type: file, options: { media: videos } }
+          - { name: youtube, label: "또는 YouTube 링크 (영상 파일 대신)", type: string }
+          - name: orientation
+            label: "영상 방향"
+            type: select
+            options:
+              values: ["horizontal", "vertical"]
+          - { name: poster, label: "영상 썸네일 이미지", type: image, options: { media: images } }
+          - { name: photo, label: "공연 사진 1장", type: image, options: { media: images } }
+
+  - name: life
+    label: "Life (개인 사진 · 스토리)"
+    type: file
+    path: content/life.json
+    format: json
+    fields:
+      - name: posts
+        label: "사진 (위에서부터 순서대로 넘겨보기)"
+        type: object
+        list: true
+        fields:
+          - { name: image, label: "사진", type: image, required: true, options: { media: images } }
+          - { name: caption, label: "무엇을 (한 줄)", type: string }
+          - { name: with, label: "누구랑", type: string }
+          - { name: place, label: "어디서", type: string }
+          - { name: date, label: "날짜", type: date }
+
   - name: videos
-    label: "영상 (Media)"
+    label: "YouTube 녹화 목록 (Recordings)"
     type: file
     path: content/videos.json
     format: json
@@ -56,7 +130,7 @@ content:
           - { name: featured, label: "대표 영상으로 표시", type: boolean }
 
   - name: gallery
-    label: "사진 (Gallery)"
+    label: "무대 사진 (Gallery · 공연당 1장)"
     type: file
     path: content/gallery.json
     format: json
@@ -66,7 +140,7 @@ content:
         type: object
         list: true
         fields:
-          - { name: image, label: "사진", type: image, required: true }
+          - { name: image, label: "사진", type: image, required: true, options: { media: images } }
           - { name: caption, label: "설명", type: string }
 
   - name: awards
@@ -144,3 +218,4 @@ content:
       - { name: email, label: "이메일", type: string }
       - { name: youtube, label: "YouTube 채널", type: string }
       - { name: instagram, label: "Instagram", type: string }
+      - { name: bgm, label: "배경음악 파일 (비우면 음악 버튼이 숨겨짐)", type: file, options: { media: audio } }

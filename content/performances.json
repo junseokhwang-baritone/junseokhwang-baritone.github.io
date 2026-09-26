@@ -1,3 +1,12 @@
 {
-  "performances": []
+  "performances": [
+    {
+      "date": "2026-09-14",
+      "title": "Salon Recital",
+      "presenter": "",
+      "venue": "",
+      "city": "",
+      "note": ""
+    }
+  ]
 }

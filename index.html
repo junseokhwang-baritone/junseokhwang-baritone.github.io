@@ -27,6 +27,7 @@
       <a href="#awards">Awards</a>
       <a href="#media">Media</a>
       <a href="#gallery">Gallery</a>
+      <a href="#life">Life</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -77,6 +78,16 @@
     <div class="container">
       <p class="eyebrow">Performances</p>
       <h2>Schedule</h2>
+      <div class="calendar" id="calendar">
+        <div class="cal-head">
+          <button class="cal-nav" id="calPrev" aria-label="Previous month">&#8249;</button>
+          <div class="cal-title" id="calTitle"></div>
+          <button class="cal-nav" id="calNext" aria-label="Next month">&#8250;</button>
+        </div>
+        <div class="cal-grid cal-dow"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+        <div class="cal-grid" id="calDays"></div>
+        <p class="cal-legend"><span class="dot"></span> Performance</p>
+      </div>
       <div id="upcoming" class="events"></div>
       <details class="past" id="pastWrap" hidden>
         <summary>Past Performances</summary>
@@ -114,13 +125,13 @@
       <p class="eyebrow">Watch &amp; Listen</p>
       <h2>Media</h2>
 
-      <div class="featured" id="featured"></div>
+      <div id="stagePerf" class="stage-list"></div>
 
-      <div class="filters">
-        <div class="filter-row" id="yearFilter" role="tablist" aria-label="Filter by year"></div>
-        <div class="filter-row small" id="catFilter" aria-label="Filter by category"></div>
-      </div>
-      <div class="video-grid" id="videoGrid"></div>
+      <div class="subhead" id="studioHead" hidden><h3>Studio &amp; Practice</h3></div>
+      <div id="stageStudio" class="stage-list studio"></div>
+
+      <div class="subhead"><h3>Recordings</h3></div>
+      <div class="rec-list" id="recList"></div>
 
       <p class="center more">
         <a class="btn-outline" data-link="youtube" href="https://www.youtube.com/@junseokhwang5029" target="_blank" rel="noopener">View YouTube Channel</a>
@@ -134,6 +145,21 @@
       <p class="eyebrow">Photos</p>
       <h2>Gallery</h2>
       <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- LIFE -->
+  <section class="section life" id="life">
+    <div class="container">
+      <p class="eyebrow">Off Stage</p>
+      <h2>Life</h2>
+      <div class="story" id="story">
+        <div class="story-bars" id="storyBars"></div>
+        <div class="story-track" id="storyTrack"></div>
+        <button class="story-nav prev" id="storyPrev" aria-label="Previous">&#8249;</button>
+        <button class="story-nav next" id="storyNext" aria-label="Next">&#8250;</button>
+      </div>
+      <p class="story-count" id="storyCount"></p>
     </div>
   </section>
 
@@ -160,6 +186,11 @@
   <footer class="footer">
     <p>&copy; <span id="year"></span> Junseok Hwang. All rights reserved.</p>
   </footer>
+
+  <!-- BGM toggle (site.json 의 bgm 이 있을 때만 표시) -->
+  <button class="bgm" id="bgmToggle" aria-label="Background music on/off" title="Music" hidden>
+    <span class="bars"><i></i><i></i><i></i></span>
+  </button>
 
   <!-- Video modal -->
   <div class="modal" id="videoModal" hidden>

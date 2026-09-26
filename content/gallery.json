@@ -1,24 +1,7 @@
 {
   "photos": [
-    {
-      "image": "images/recital-1.jpg",
-      "caption": "Recital"
-    },
-    {
-      "image": "images/recital-2.jpg",
-      "caption": "Recital"
-    },
-    {
-      "image": "images/recital-3.jpg",
-      "caption": "Recital"
-    },
-    {
-      "image": "images/recital-4.jpg",
-      "caption": "Recital"
-    },
-    {
-      "image": "images/recital-5.jpg",
-      "caption": "Recital"
-    }
+    { "image": "images/stage/concert-church.jpg", "caption": "Curtain call" },
+    { "image": "images/stage/salon-recital.jpg", "caption": "After the salon recital" },
+    { "image": "images/stage/backstage.jpg", "caption": "Backstage" }
   ]
 }

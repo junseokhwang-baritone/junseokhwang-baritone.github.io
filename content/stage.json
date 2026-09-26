@@ -1,0 +1,79 @@
+{
+  "performances": [
+    {
+      "section": "Performance",
+      "title": "Evening Concert",
+      "date": "",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/concert-a.mp4",
+      "youtube": "",
+      "poster": "images/posters/concert-a.jpg",
+      "photo": "images/stage/concert-church.jpg",
+      "orientation": "horizontal"
+    },
+    {
+      "section": "Performance",
+      "title": "Salon Recital",
+      "date": "2026-09-14",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/salon-b.mp4",
+      "youtube": "",
+      "poster": "images/posters/salon-b.jpg",
+      "photo": "images/stage/salon-recital.jpg",
+      "orientation": "vertical"
+    },
+    {
+      "section": "Performance",
+      "title": "Gala Concert",
+      "date": "",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/gala-e.mp4",
+      "youtube": "",
+      "poster": "images/posters/gala-e.jpg",
+      "photo": "",
+      "orientation": "horizontal"
+    },
+    {
+      "section": "Studio",
+      "title": "Studio Session",
+      "date": "",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/studio-c.mp4",
+      "youtube": "",
+      "poster": "images/posters/studio-c.jpg",
+      "photo": "",
+      "orientation": "horizontal"
+    },
+    {
+      "section": "Studio",
+      "title": "In the Practice Room",
+      "date": "",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/practice-d.mp4",
+      "youtube": "",
+      "poster": "images/posters/practice-d.jpg",
+      "photo": "",
+      "orientation": "horizontal"
+    }
+  ]
+}
