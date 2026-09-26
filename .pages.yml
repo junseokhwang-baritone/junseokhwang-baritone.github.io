@@ -96,7 +96,7 @@ content:
           - { name: image, label: "사진", type: image, required: true, options: { media: images } }
           - { name: caption, label: "설명", type: string }
           - { name: date, label: "촬영 날짜 (예: 2026-09-25) — 최신순 정렬", type: string }
-          - { name: pinned, label: "맨 위에 고정", type: boolean }
+          - { name: position, label: "위치 고정 (몇 번째에 보일지, 예: 1 = 맨 위. 비우면 날짜순)", type: number }
 
   - name: awards
     label: "수상 (Awards)"

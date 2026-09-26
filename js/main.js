@@ -24,9 +24,14 @@ window.siteEntered = Promise.resolve();
   const PERFORMANCES = perfData.performances || [];
   const ROLES = rolesData.roles || [];
   const AWARDS = awardsData.awards || [];
-  // 갤러리: "맨 위 고정" 사진 먼저, 그다음 날짜 최신순 (날짜 없는 사진은 맨 뒤)
-  const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption, date: g.date || "", pinned: !!g.pinned }))
-    .sort((a, b) => (b.pinned - a.pinned) || b.date.localeCompare(a.date));
+  // 갤러리: 날짜 최신순. "위치 고정(몇 번째)"이 있는 사진은 그 자리에 끼워 넣음
+  const GALLERY = (() => {
+    const all = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption, date: g.date || "", position: Number(g.position) || 0 }));
+    const list = all.filter((g) => !g.position).sort((a, b) => b.date.localeCompare(a.date));
+    all.filter((g) => g.position).sort((a, b) => a.position - b.position)
+      .forEach((g) => list.splice(Math.min(g.position - 1, list.length), 0, g));
+    return list;
+  })();
   const MEDIA = (mediaData.videos || []).filter((v) => v.video || ytId(v.youtube)).map((v, i) => ({ ...v, _i: i, yt: ytId(v.youtube), year: String(v.date || "").slice(0, 4) }));
 
   /* ── BACKGROUND MUSIC ────────────── */
