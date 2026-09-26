@@ -199,8 +199,8 @@ window.siteEntered = Promise.resolve();
 
   /* ── MEDIA: 연도별 영상 ────────── */
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
-  const CATS = ["Concert", "Studio & Rehearsal"];
-  const catOf = (v) => (CATS.includes(v.category) ? v.category : "Studio & Rehearsal");
+  const CATS = ["Concert", "Studio"];
+  const catOf = (v) => (CATS.includes(v.category) ? v.category : "Studio");
   const cats = CATS.filter((c) => MEDIA.some((v) => catOf(v) === c));
   let curCat = cats[0];
   const card = (v) => {

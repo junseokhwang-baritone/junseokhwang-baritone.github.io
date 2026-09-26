@@ -20,7 +20,7 @@
       "poster": "images/posters/concert-a.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
+      "category": "Studio",
       "title": "Studio Recital",
       "subtitle": "",
       "date": "2026-08",
@@ -34,8 +34,8 @@
       "poster": "images/posters/20260812_104811-thumb.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
-      "title": "Rehearsal",
+      "category": "Studio",
+      "title": "Salon Concert",
       "subtitle": "",
       "date": "2026-08",
       "venue": "",
@@ -48,7 +48,7 @@
       "poster": "images/posters/20260809_045056-thumb.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
+      "category": "Studio",
       "title": "Pavilion Recital",
       "subtitle": "",
       "date": "2026-07",
@@ -62,7 +62,7 @@
       "poster": "images/posters/20260710_065736.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
+      "category": "Studio",
       "title": "Salon Recital",
       "subtitle": "",
       "date": "2026-06",
@@ -90,7 +90,7 @@
       "poster": "images/posters/gala-e.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
+      "category": "Studio",
       "title": "Studio Session",
       "subtitle": "",
       "date": "2026-09",
@@ -104,7 +104,7 @@
       "poster": "images/posters/studio-c-thumb2.jpg"
     },
     {
-      "category": "Studio & Rehearsal",
+      "category": "Studio",
       "title": "Largo al factotum",
       "subtitle": "Il Barbiere di Siviglia · Rossini",
       "date": "2025-11",
