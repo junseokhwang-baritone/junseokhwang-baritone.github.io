@@ -1,11 +1,11 @@
-# 매주 AVA 링크트리 / 공연 페이지를 확인해서 새 공연을 공연 일정에 추가
+# 매일 AVA 링크트리 / 공연 페이지를 확인해서 새 공연을 공연 일정에 추가
 #  - 준석이 이름이 확인되면 바로 공개, 아니면 숨김 초안으로 추가
 #  - 새 공연이 있으면 GitHub 이슈(알림 메일)로 알려줌
 name: AVA schedule sync
 
 on:
   schedule:
-    - cron: "0 13 * * 1"   # 매주 월요일 13:00 UTC (한국 밤 10시 / 필라델피아 오전 9시)
+    - cron: "0 13 * * *"   # 매일 13:00 UTC (한국 밤 10시 / 필라델피아 오전 9시)
   workflow_dispatch:        # Actions 탭에서 "Run workflow"로 바로 실행 가능
 
 permissions:
