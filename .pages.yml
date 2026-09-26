@@ -42,7 +42,7 @@ content:
           - { name: note, label: "메모", type: string }
 
   - name: media
-    label: "영상 (Media · Concert / Studio / Practice)"
+    label: "영상 (Media · Concert / Studio)"
     type: file
     path: content/media.json
     format: json
@@ -57,7 +57,7 @@ content:
             type: select
             required: true
             options:
-              values: ["Concert", "Studio", "Practice"]
+              values: ["Concert", "Studio"]
           - { name: title, label: "제목 (곡명 또는 공연명)", type: string, required: true }
           - { name: subtitle, label: "부제 (작품 · 작곡가)", type: string }
           - { name: date, label: "날짜 (예: 2026, 2026-05, 2026-05-14) — 탭 안에서 최신순 정렬", type: string, required: true }
