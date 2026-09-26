@@ -1,13 +1,13 @@
 # Junseok Hwang · Baritone
 
-바리톤 황준석 공식 웹사이트 (GitHub Pages)
+바리톤 황준석 공식 웹사이트 — https://junseokhwang-baritone.github.io
 
 ## 관리자: 사진 · 영상 · 공연 일정 추가하기
 
 이 저장소에 **쓰기 권한이 있는 GitHub 계정**만 수정할 수 있습니다.
 
 1. https://app.pagescms.org 접속 → **Sign in with GitHub**
-2. `junseok-hwang` 저장소 선택
+2. `junseokhwang-baritone.github.io` 저장소 선택
 3. 왼쪽 메뉴에서 편집할 항목 선택 → 추가/수정 → **Save**
 4. 저장하면 1~2분 뒤 사이트에 자동 반영됩니다.
 
@@ -22,7 +22,7 @@
 > 사진은 한 장당 1~2MB 이하(가로 2000px 정도)를 권장합니다.
 
 ### 관리자 추가
-GitHub 저장소 → Settings → Collaborators → **Add people** → 준석이 GitHub 아이디 초대
+GitHub 조직 junseokhwang-baritone → People → **Invite member** → 준석이 GitHub 아이디 초대 (역할: Owner)
 
 ## 구조
 
