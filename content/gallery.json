@@ -36,16 +36,6 @@
       "date": "2026-09-07"
     },
     {
-      "image": "images/life/ava-selfie.jpg",
-      "caption": "",
-      "date": "2026-09-07"
-    },
-    {
-      "image": "images/life/ava-building.jpg",
-      "caption": "",
-      "date": "2026-09-04"
-    },
-    {
       "image": "images/life/family-lunch.jpg",
       "caption": "",
       "date": "2026-08-30"
@@ -94,11 +84,6 @@
       "image": "images/life/studio-visit.jpg",
       "caption": "",
       "date": "2026-07-22"
-    },
-    {
-      "image": "images/life/portrait-duo.jpg",
-      "caption": "",
-      "date": "2026-06-20"
     }
   ]
 }

@@ -37,6 +37,8 @@
     .bday-msg h2 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: clamp(2.4rem, 8vw, 4.2rem); line-height: 1; margin: 0; }
     .bday-msg h2::after { display: none; }
     .bday-msg p { font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: #8a8a8a; margin-top: 14px; }
+    .bday-msg .bday-from { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.35rem; letter-spacing: .02em; text-transform: none; color: #4a4a4a; margin-top: 18px; }
+    .bday-msg .bday-from span { color: #c0392b; font-style: normal; font-size: 1rem; }
     .bday-msg button { position: absolute; top: 6px; right: 12px; font-size: 1.6rem; font-weight: 200; color: #4a4a4a; background: none; border: 0; cursor: pointer; }
   `;
   document.head.appendChild(style);
@@ -130,12 +132,12 @@
   const msg = document.createElement("div");
   msg.className = "bday-msg";
   msg.setAttribute("role", "status");
-  msg.innerHTML = `<button aria-label="Close">&times;</button><h2>Happy Birthday!</h2><p>Junseok · September 29</p>`;
+  msg.innerHTML = `<button aria-label="Close">&times;</button><h2>Happy Birthday,<br>Junseok</h2><p class="bday-from">love you — from SH <span>&hearts;</span></p>`;
   document.body.appendChild(msg);
   const close = () => { msg.classList.remove("show"); setTimeout(() => msg.remove(), 700); };
   msg.querySelector("button").addEventListener("click", close);
   requestAnimationFrame(() => setTimeout(() => msg.classList.add("show"), 400));
-  setTimeout(close, 9000);
+  setTimeout(close, 12000);
   setTimeout(() => layer.remove(), 16000);
   }
 })();
