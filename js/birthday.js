@@ -137,7 +137,7 @@
   const close = () => { msg.classList.remove("show"); setTimeout(() => msg.remove(), 700); };
   msg.querySelector("button").addEventListener("click", close);
   requestAnimationFrame(() => setTimeout(() => msg.classList.add("show"), 400));
-  setTimeout(close, 12000);
+  setTimeout(close, 8000);
   setTimeout(() => layer.remove(), 16000);
   }
 })();
