@@ -4,7 +4,7 @@
       "category": "Concert",
       "title": "New Artist Recital",
       "subtitle": "",
-      "date": "2026-09-25",
+      "date": "2026-09",
       "venue": "The Church of the Holy Trinity",
       "city": "Philadelphia",
       "description": "Debut recital of the Academy of Vocal Arts' new Resident Artists.",
@@ -20,35 +20,7 @@
       "poster": "images/posters/concert-a.jpg"
     },
     {
-      "category": "Studio",
-      "title": "House Concert",
-      "subtitle": "",
-      "date": "2026-08",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "videos/20260816_104542.mp4",
-      "youtube": "",
-      "poster": "images/posters/20260816_104542-thumb.jpg"
-    },
-    {
-      "category": "Studio",
-      "title": "House Concert",
-      "subtitle": "",
-      "date": "2026-08",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "videos/20260814_082103.mp4",
-      "youtube": "",
-      "poster": "images/posters/20260814_082103-thumb.jpg"
-    },
-    {
-      "category": "Studio",
+      "category": "Studio & Rehearsal",
       "title": "Studio Recital",
       "subtitle": "",
       "date": "2026-08",
@@ -62,7 +34,7 @@
       "poster": "images/posters/20260812_104811-thumb.jpg"
     },
     {
-      "category": "Studio",
+      "category": "Studio & Rehearsal",
       "title": "Summer Performance",
       "subtitle": "",
       "date": "2026-08",
@@ -76,7 +48,7 @@
       "poster": "images/posters/20260809_045056-thumb.jpg"
     },
     {
-      "category": "Studio",
+      "category": "Studio & Rehearsal",
       "title": "Pavilion Recital",
       "subtitle": "",
       "date": "2026-07",
@@ -90,8 +62,8 @@
       "poster": "images/posters/20260710_065736.jpg"
     },
     {
-      "category": "Studio",
-      "title": "House Concert",
+      "category": "Studio & Rehearsal",
+      "title": "Salon Recital",
       "subtitle": "",
       "date": "2026-06",
       "venue": "",
@@ -107,7 +79,7 @@
       "category": "Concert",
       "title": "Semifinalists' Concert",
       "subtitle": "",
-      "date": "2026-06-04",
+      "date": "2026-06",
       "venue": "",
       "city": "Cascais, Portugal",
       "description": "",
@@ -118,7 +90,7 @@
       "poster": "images/posters/gala-e.jpg"
     },
     {
-      "category": "Studio",
+      "category": "Studio & Rehearsal",
       "title": "Studio Session",
       "subtitle": "",
       "date": "2026",
@@ -130,6 +102,53 @@
       "video": "videos/studio-c.mp4",
       "youtube": "",
       "poster": "images/posters/studio-c-thumb.jpg"
+    },
+    {
+      "category": "Studio & Rehearsal",
+      "title": "Pavilion Recital",
+      "subtitle": "",
+      "date": "2026-07",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/20260710_065738.mp4",
+      "youtube": "",
+      "poster": "images/posters/20260710_065738-thumb.jpg"
+    },
+    {
+      "category": "Studio & Rehearsal",
+      "title": "Studio Session",
+      "subtitle": "",
+      "date": "2026",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [],
+      "video": "videos/studio-c2.mp4",
+      "youtube": "",
+      "poster": "images/posters/studio-c2-thumb.jpg"
+    },
+    {
+      "category": "Studio & Rehearsal",
+      "title": "Largo al factotum",
+      "subtitle": "Il Barbiere di Siviglia · Rossini",
+      "date": "2025-11",
+      "venue": "",
+      "city": "",
+      "description": "",
+      "program": [],
+      "performers": [
+        {
+          "name": "Soojin Jeong",
+          "role": "Piano"
+        }
+      ],
+      "video": "",
+      "youtube": "https://www.youtube.com/watch?v=gccNThEr1HE",
+      "poster": ""
     }
   ]
 }

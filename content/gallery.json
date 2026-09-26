@@ -49,7 +49,8 @@
     {
       "image": "images/life/sunset-terrace.jpg",
       "caption": "Summer sunset",
-      "date": "2026-08-05"
+      "date": "2026-08-05",
+      "position": 999
     },
     {
       "image": "images/stage/costume-stage.jpg",

@@ -5,9 +5,9 @@
 (function () {
   const now = new Date();
   const force = new URLSearchParams(location.search).has("birthday");
-  // 생일 주간: 생일(9/29)을 마지막 날로 하는 7일 = 9월 23일 ~ 9월 29일
+  // 생일 주간: 9월 23일 ~ 10월 1일 (필라델피아 시차 고려해 한국 기준 10/1까지 표시)
   const y = now.getFullYear(), today = new Date(y, now.getMonth(), now.getDate());
-  const inWeek = today >= new Date(y, 8, 23) && today <= new Date(y, 8, 29);
+  const inWeek = today >= new Date(y, 8, 23) && today <= new Date(y, 9, 1);
   if (!force && !inWeek) return;
   (window.siteEntered || Promise.resolve()).then(run);
   function run() {
@@ -138,7 +138,7 @@
   const msg = document.createElement("div");
   msg.className = "bday-msg";
   msg.setAttribute("role", "status");
-  msg.innerHTML = `<button aria-label="Close">&times;</button><h2><span>Happy Birthday,</span><span>Junseok</span></h2><p class="bday-from">love you — from SH <span>&hearts;</span></p>`;
+  msg.innerHTML = `<button aria-label="Close">&times;</button><h2><span>Happy Birthday,</span><span>Junseok</span></h2><p class="bday-from">With love — from SH <span>&hearts;</span></p>`;
   document.body.appendChild(msg);
   const close = () => { msg.classList.remove("show"); setTimeout(() => msg.remove(), 700); };
   msg.querySelector("button").addEventListener("click", close);
