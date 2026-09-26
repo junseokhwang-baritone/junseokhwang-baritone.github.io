@@ -1,0 +1,64 @@
+{
+  "roles": [
+    {
+      "role": "Papageno",
+      "opera": "Die Zauberflöte",
+      "composer": "Mozart",
+      "company": "Hawaii Performing Arts Festival",
+      "year": 2023,
+      "note": "Full role"
+    },
+    {
+      "role": "Spinelloccio",
+      "opera": "Gianni Schicchi",
+      "composer": "Puccini",
+      "company": "The Juilliard School",
+      "year": 2023
+    },
+    {
+      "role": "Johannes Zegner",
+      "opera": "Proving Up",
+      "composer": "Mazzoli",
+      "company": "The Juilliard School",
+      "year": 2023,
+      "note": "Cover"
+    },
+    {
+      "role": "Il Marito",
+      "opera": "Amelia al Ballo",
+      "composer": "Menotti",
+      "company": "The Juilliard School",
+      "year": 2022
+    },
+    {
+      "role": "Nick Bottom",
+      "opera": "A Midsummer Night's Dream",
+      "composer": "Britten",
+      "company": "The Juilliard School",
+      "year": 2021
+    },
+    {
+      "role": "Il Conte",
+      "opera": "Le Nozze di Figaro",
+      "composer": "Mozart",
+      "company": "Chautauqua",
+      "year": 2021,
+      "note": "Understudy"
+    },
+    {
+      "role": "Peter",
+      "opera": "Hansel and Gretel",
+      "composer": "Humperdinck",
+      "company": "Chautauqua",
+      "year": 2021
+    },
+    {
+      "role": "Papageno",
+      "opera": "Die Zauberflöte",
+      "composer": "Mozart",
+      "company": "Aspen Music Festival",
+      "year": 2019,
+      "note": "Scene"
+    }
+  ]
+}

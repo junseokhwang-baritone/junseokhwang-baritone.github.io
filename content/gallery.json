@@ -1,0 +1,24 @@
+{
+  "photos": [
+    {
+      "image": "images/recital-1.jpg",
+      "caption": "Recital"
+    },
+    {
+      "image": "images/recital-2.jpg",
+      "caption": "Recital"
+    },
+    {
+      "image": "images/recital-3.jpg",
+      "caption": "Recital"
+    },
+    {
+      "image": "images/recital-4.jpg",
+      "caption": "Recital"
+    },
+    {
+      "image": "images/recital-5.jpg",
+      "caption": "Recital"
+    }
+  ]
+}

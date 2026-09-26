@@ -1,0 +1,54 @@
+{
+  "education": [
+    {
+      "year": "2026 –",
+      "title": "Academy of Vocal Arts",
+      "detail": "Philadelphia"
+    },
+    {
+      "year": "2023",
+      "title": "The Juilliard School",
+      "detail": "Bachelor of Music · Studied with William Burden"
+    }
+  ],
+  "programs": [
+    {
+      "year": "2026",
+      "title": "Aspen Music Festival",
+      "detail": "Renée Fleming Artist"
+    },
+    {
+      "year": "2023",
+      "title": "Classic Lyric Arts Italy"
+    },
+    {
+      "year": "2023",
+      "title": "Hawaii Performing Arts Festival"
+    },
+    {
+      "year": "2021",
+      "title": "Chautauqua Institution"
+    },
+    {
+      "year": "2019",
+      "title": "Aspen Music Festival"
+    }
+  ],
+  "coaches": [
+    {
+      "name": "Justina Lee"
+    },
+    {
+      "name": "Adam Nielsen"
+    },
+    {
+      "name": "Diane Richardson"
+    },
+    {
+      "name": "Mary Birnbaum"
+    },
+    {
+      "name": "Kyungeun Na"
+    }
+  ]
+}

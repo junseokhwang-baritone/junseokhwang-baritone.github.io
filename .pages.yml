@@ -1,0 +1,146 @@
+# Pages CMS 설정 — https://app.pagescms.org 에서 GitHub 계정으로 로그인하면 이 편집 화면이 나타납니다.
+# 이 저장소에 쓰기 권한(Collaborator)이 있는 사람만 편집·저장할 수 있습니다.
+
+media:
+  input: images
+  output: images
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: performances
+    label: "공연 일정 (Schedule)"
+    type: file
+    path: content/performances.json
+    format: json
+    fields:
+      - name: performances
+        label: "공연"
+        type: object
+        list: true
+        fields:
+          - { name: date, label: "날짜 (시작일)", type: date, required: true }
+          - { name: endDate, label: "종료일 (여러 날 공연일 때만)", type: date }
+          - { name: time, label: "시간 (예: 19:30)", type: string }
+          - { name: title, label: "공연명", type: string, required: true }
+          - { name: role, label: "배역 / 역할", type: string }
+          - { name: presenter, label: "주최 (오페라단·오케스트라 등)", type: string }
+          - { name: venue, label: "공연장", type: string }
+          - { name: city, label: "도시", type: string }
+          - { name: ticketUrl, label: "티켓 예매 링크", type: string }
+          - { name: note, label: "메모", type: string }
+
+  - name: videos
+    label: "영상 (Media)"
+    type: file
+    path: content/videos.json
+    format: json
+    fields:
+      - name: videos
+        label: "영상"
+        type: object
+        list: true
+        fields:
+          - { name: url, label: "YouTube 링크", type: string, required: true }
+          - { name: year, label: "연도", type: number, required: true }
+          - name: category
+            label: "분류"
+            type: select
+            required: true
+            options:
+              values: ["Opera", "Art Song", "Musical Theatre", "Concert", "Competition"]
+          - { name: title, label: "곡 제목", type: string, required: true }
+          - { name: source, label: "작품 · 작곡가 (예: Le Nozze di Figaro · Mozart)", type: string }
+          - { name: piano, label: "반주자", type: string }
+          - { name: event, label: "대회 / 공연명 (카드에 태그로 표시)", type: string }
+          - { name: note, label: "메모", type: string }
+          - { name: featured, label: "대표 영상으로 표시", type: boolean }
+
+  - name: gallery
+    label: "사진 (Gallery)"
+    type: file
+    path: content/gallery.json
+    format: json
+    fields:
+      - name: photos
+        label: "사진"
+        type: object
+        list: true
+        fields:
+          - { name: image, label: "사진", type: image, required: true }
+          - { name: caption, label: "설명", type: string }
+
+  - name: awards
+    label: "수상 (Awards)"
+    type: file
+    path: content/awards.json
+    format: json
+    fields:
+      - name: awards
+        label: "수상"
+        type: object
+        list: true
+        fields:
+          - { name: year, label: "연도", type: string, required: true }
+          - { name: competition, label: "대회명", type: string, required: true }
+          - { name: result, label: "결과", type: string, required: true }
+          - { name: highlight, label: "주요 수상 강조", type: boolean }
+
+  - name: roles
+    label: "오페라 배역 (Roles)"
+    type: file
+    path: content/roles.json
+    format: json
+    fields:
+      - name: roles
+        label: "배역"
+        type: object
+        list: true
+        fields:
+          - { name: role, label: "배역", type: string, required: true }
+          - { name: opera, label: "작품", type: string, required: true }
+          - { name: composer, label: "작곡가", type: string }
+          - { name: company, label: "단체 / 페스티벌", type: string }
+          - { name: year, label: "연도", type: number }
+          - { name: note, label: "비고 (Cover, Scene 등)", type: string }
+
+  - name: training
+    label: "학력 · 프로그램 (Training)"
+    type: file
+    path: content/training.json
+    format: json
+    fields:
+      - name: education
+        label: "학력"
+        type: object
+        list: true
+        fields:
+          - { name: year, label: "연도", type: string }
+          - { name: title, label: "학교", type: string }
+          - { name: detail, label: "상세", type: string }
+      - name: programs
+        label: "영아티스트 프로그램"
+        type: object
+        list: true
+        fields:
+          - { name: year, label: "연도", type: string }
+          - { name: title, label: "프로그램", type: string }
+          - { name: detail, label: "상세", type: string }
+      - name: coaches
+        label: "코치 / 멘토"
+        type: object
+        list: true
+        fields:
+          - { name: name, label: "이름", type: string }
+
+  - name: site
+    label: "기본 정보 · 연락처"
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: name, label: "이름 (영문)", type: string }
+      - { name: nameKo, label: "이름 (한글)", type: string }
+      - { name: voice, label: "성부", type: string }
+      - { name: email, label: "이메일", type: string }
+      - { name: youtube, label: "YouTube 채널", type: string }
+      - { name: instagram, label: "Instagram", type: string }

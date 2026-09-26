@@ -1,0 +1,39 @@
+{
+  "performances": [
+    {
+      "date": "2026-10-24",
+      "time": "19:30",
+      "title": "Sample Recital",
+      "role": "Baritone",
+      "presenter": "Sample Presenter",
+      "venue": "Sample Hall",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "#"
+    },
+    {
+      "date": "2026-12-05",
+      "endDate": "2026-12-07",
+      "time": "19:00",
+      "title": "Sample Opera",
+      "role": "Sample Role",
+      "presenter": "Sample Company",
+      "venue": "Sample Theater",
+      "city": "New York, NY",
+      "ticketUrl": "#"
+    },
+    {
+      "date": "2027-02-13",
+      "title": "Sample Gala Concert",
+      "presenter": "Sample Orchestra",
+      "venue": "Sample Concert Hall",
+      "city": "Seoul, Korea"
+    },
+    {
+      "date": "2026-07-20",
+      "title": "Sample Past Concert",
+      "presenter": "Sample Festival",
+      "venue": "Sample Tent",
+      "city": "Aspen, CO"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "awards": [
+    {
+      "year": "2023",
+      "competition": "Cascais International Voice Competition",
+      "result": "Semi-finalist & Special Contract Prize",
+      "highlight": true
+    },
+    {
+      "year": "2023",
+      "competition": "Giulio Gari Competition",
+      "result": "Finalist",
+      "highlight": true
+    },
+    {
+      "year": "2020",
+      "competition": "Korea-China International Voice Competition",
+      "result": "2nd Place"
+    },
+    {
+      "year": "2019",
+      "competition": "New Jersey Sinfonietta Vocal Competition",
+      "result": "3rd Place"
+    },
+    {
+      "year": "2017",
+      "competition": "Classical Singer Competition, Chicago",
+      "result": "Finalist"
+    }
+  ]
+}
