@@ -326,3 +326,13 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 @keyframes bgmHint { 0%, 100% { box-shadow: 0 1px 6px rgba(0,0,0,.12); } 50% { box-shadow: 0 0 0 7px rgba(0,0,0,.08); } }
 .media-more { margin-top: 56px; cursor: pointer; background: none; }
 .media-more[hidden] { display: none; }
+
+/* ── ABOUT: 원형 프로필 사진 ─────── */
+.about-head { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.about-head h2 { margin-bottom: 56px; }
+.about-photo { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; flex-shrink: 0; margin-bottom: 40px;
+  filter: grayscale(1); transition: filter .6s ease; box-shadow: 0 0 0 1px var(--gray-2), 0 0 0 7px var(--white), 0 0 0 8px var(--gray-2); }
+.about-photo:hover { filter: none; }
+@media (max-width: 560px) {
+  .about-photo { width: 112px; height: 112px; margin-bottom: 36px; box-shadow: 0 0 0 1px var(--gray-2), 0 0 0 5px var(--white), 0 0 0 6px var(--gray-2); }
+}
