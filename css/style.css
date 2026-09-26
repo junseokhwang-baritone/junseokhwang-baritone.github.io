@@ -273,7 +273,7 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
   .awards .result { font-size: 1.35rem; }
   .bio p { font-size: 1.18rem; }
   .hero-text { left: 20px; bottom: 16vh; }
-  .hero-img { background-position: 72% 30%; }
+  .hero-img { background-position: 45% 30%; }
   .hero-overlay { background: linear-gradient(0deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.2) 100%); }
 }
 @media (max-width: 560px) {

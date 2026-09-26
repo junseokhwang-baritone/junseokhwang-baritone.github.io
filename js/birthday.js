@@ -36,6 +36,12 @@
     .bday-msg.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     .bday-msg h2 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: clamp(2.4rem, 8vw, 4.2rem); line-height: 1; margin: 0; }
     .bday-msg h2::after { display: none; }
+    .bday-msg h2 span { display: block; white-space: nowrap; }
+    @media (max-width: 560px) {
+      .bday-msg { width: calc(100vw - 32px); padding: 34px 18px 28px; }
+      .bday-msg h2 { font-size: min(4.2rem, 9.2vw); }
+      .bday-msg .bday-from { font-size: 1.15rem; }
+    }
     .bday-msg p { font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: #8a8a8a; margin-top: 14px; }
     .bday-msg .bday-from { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.35rem; letter-spacing: .02em; text-transform: none; color: #4a4a4a; margin-top: 18px; }
     .bday-msg .bday-from span { color: #c0392b; font-style: normal; font-size: 1rem; }
@@ -132,7 +138,7 @@
   const msg = document.createElement("div");
   msg.className = "bday-msg";
   msg.setAttribute("role", "status");
-  msg.innerHTML = `<button aria-label="Close">&times;</button><h2>Happy Birthday,<br>Junseok</h2><p class="bday-from">love you — from SH <span>&hearts;</span></p>`;
+  msg.innerHTML = `<button aria-label="Close">&times;</button><h2><span>Happy Birthday,</span><span>Junseok</span></h2><p class="bday-from">love you — from SH <span>&hearts;</span></p>`;
   document.body.appendChild(msg);
   const close = () => { msg.classList.remove("show"); setTimeout(() => msg.remove(), 700); };
   msg.querySelector("button").addEventListener("click", close);
