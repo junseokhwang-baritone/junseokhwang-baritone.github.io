@@ -285,38 +285,6 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 }
 
 
-/* ── STAGE CARDS (Media) ─────────── */
-.stage-list { display: flex; flex-direction: column; gap: 96px; }
-.stage-card { display: grid; grid-template-columns: 1.55fr 1fr; gap: 48px; align-items: start; }
-.stage-card.is-vertical { grid-template-columns: minmax(0, 360px) 1fr; }
-.stage-video video { width: 100%; display: block; background: var(--black); aspect-ratio: 16 / 9; }
-.stage-video.vertical video { aspect-ratio: 9 / 16; }
-.stage-meta { font-size: .78rem; letter-spacing: .12em; color: var(--gray-5); margin: -6px 0 18px; }
-.stage-title { font-family: var(--serif); font-size: 2.1rem; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.15; margin-bottom: 14px; }
-.stage-desc { font-size: .95rem; color: var(--gray-7); margin-bottom: 20px; }
-.stage-block { margin-bottom: 18px; }
-.stage-block h4 { font-size: .62rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--gray-5); margin-bottom: 6px; }
-.stage-block ul { list-style: none; }
-.stage-block li { font-family: var(--serif); font-size: 1.12rem; line-height: 1.5; }
-.stage-block li span { font-family: var(--sans); font-size: .8rem; color: var(--gray-7); }
-.subhead { margin: 112px 0 40px; border-top: 1px solid var(--black); padding-top: 18px; }
-.subhead h3 { margin: 0; }
-.stage-list.studio { gap: 64px; }
-.stage-list.studio .stage-card { grid-template-columns: 1.2fr 1fr; }
-.stage-list.studio .stage-title { font-size: 1.6rem; }
-
-/* ── RECORDINGS (YouTube list) ───── */
-.rec-list { border-top: 1px solid var(--gray-2); }
-.rec { display: grid; grid-template-columns: 128px 1fr auto; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--gray-2); cursor: pointer; }
-.rec-thumb { position: relative; aspect-ratio: 16 / 9; background: var(--black); overflow: hidden; }
-.rec-thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter .4s; }
-.rec:hover .rec-thumb img { filter: none; }
-.play.sm { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
-.play.sm::after { left: 11px; top: 8px; border-left-width: 10px; border-top-width: 7px; border-bottom-width: 7px; }
-.rec-title { font-family: var(--serif); font-size: 1.3rem; line-height: 1.25; }
-.rec-src { font-family: var(--serif); font-style: italic; color: var(--gray-7); }
-.rec-year { font-family: var(--serif); font-size: 1.1rem; color: var(--gray-5); }
-
 .gallery figcaption { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gray-7); padding: 10px 0 4px; }
 
 /* ── BGM toggle ──────────────────── */
@@ -331,13 +299,24 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 @keyframes eq { 0%, 100% { height: 3px; } 50% { height: 11px; } }
 
 @media (max-width: 960px) {
-  .stage-card, .stage-card.is-vertical, .stage-list.studio .stage-card { grid-template-columns: 1fr; gap: 24px; }
-  .stage-card.is-vertical .stage-video { max-width: 360px; }
 }
 @media (max-width: 560px) {
-  .rec { grid-template-columns: 96px 1fr; gap: 14px; }
-  .rec-year { display: none; }
-  .rec-title { font-size: 1.1rem; }
-  .stage-list { gap: 72px; }
-  .stage-card.is-vertical .stage-video { max-width: none; }
 }
+
+/* ── MEDIA GRID ──────────────────── */
+#yearFilter { margin-bottom: 40px; }
+.media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 28px; }
+.m-card { cursor: pointer; }
+.m-card:hover .ratio img { filter: grayscale(0); transform: scale(1.03); }
+.m-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; letter-spacing: 0; text-transform: none; line-height: 1.25; margin: 16px 0 2px; }
+.m-sub { font-family: var(--serif); font-style: italic; color: var(--gray-7); font-size: 1rem; }
+.m-meta { font-size: .72rem; letter-spacing: .12em; color: var(--gray-5); margin-top: 4px; }
+.modal-body.video video { position: absolute; inset: 0; width: 100%; height: 100%; background: #000; }
+.modal-info { color: #ddd; margin-top: 18px; }
+.modal-info h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; letter-spacing: 0; text-transform: none; margin: 0 0 4px; color: #fff; }
+.mi-meta { font-size: .75rem; letter-spacing: .12em; color: #999; }
+.mi-desc { font-size: .9rem; margin-top: 10px; max-width: 760px; }
+.mi-line { font-size: .88rem; margin-top: 6px; }
+.mi-line span { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: #888; margin-right: 8px; }
+@media (max-width: 960px) { .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .media-grid { grid-template-columns: 1fr; } }

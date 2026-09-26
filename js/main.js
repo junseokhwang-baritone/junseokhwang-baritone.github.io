@@ -9,8 +9,8 @@
   const MONTHS_FULL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const demo = new URLSearchParams(location.search).has("demo");
   const load = (f) => fetch(`content/${f}.json`, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
-  const [SITE, perfData, rolesData, awardsData, TRAINING, videoData, galleryData, stageData] = await Promise.all(
-    ["site", demo ? "demo-performances" : "performances", "roles", "awards", "training", "videos", "gallery", "stage"].map(load)
+  const [SITE, perfData, rolesData, awardsData, TRAINING, mediaData, galleryData] = await Promise.all(
+    ["site", demo ? "demo-performances" : "performances", "roles", "awards", "training", "media", "gallery"].map(load)
   );
   const path = (p) => String(p || "").replace(/^\/+/, "");
   const ytId = (u) => { const m = String(u || "").match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([\w-]{11})/); return m ? m[1] : ""; };
@@ -22,9 +22,8 @@
   const PERFORMANCES = perfData.performances || [];
   const ROLES = rolesData.roles || [];
   const AWARDS = awardsData.awards || [];
-  const VIDEOS = (videoData.videos || []).filter((v) => ytId(v.url)).map((v) => ({ ...v, id: ytId(v.url), year: Number(v.year) }));
   const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption }));
-  const STAGE = (stageData.performances || []).filter((p) => p.title || p.video || p.youtube);
+  const MEDIA = (mediaData.videos || []).filter((v) => v.video || ytId(v.youtube)).map((v, i) => ({ ...v, _i: i, yt: ytId(v.youtube), year: String(v.date || "").slice(0, 4) }));
 
   /* ── BACKGROUND MUSIC ────────────── */
   // site.json 의 bgm 에 음원 경로를 넣으면 켜집니다. 영상 재생 시 자동으로 멈춥니다.
@@ -50,7 +49,7 @@
     });
     // 브라우저는 사용자 동작 전 자동재생을 막으므로, 첫 클릭/터치/키 입력 때 시작
     const kick = (e) => {
-      if (e.target.closest && e.target.closest("#bgmToggle, [data-id], video")) return;
+      if (e.target.closest && e.target.closest("#bgmToggle, [data-media], video")) return;
       if (bgm.wanted && !anyVideoPlaying()) bgm.play();
       ["pointerdown", "keydown"].forEach((t) => document.removeEventListener(t, kick, true));
     };
@@ -183,62 +182,54 @@
       <div><div class="result">${esc(a.result)}</div><div class="comp">${esc(a.competition)}</div></div>
     </li>`).join("");
 
-  /* ── MEDIA: 공연 단위 카드 (영상 1 + 사진 1 + 정보) ── */
+  /* ── MEDIA: 연도별 영상 ────────── */
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
-  const stageCard = (p) => {
-    const yt = ytId(p.youtube);
-    const vertical = p.orientation === "vertical";
-    const media = p.video
-      ? `<div class="stage-video ${vertical ? "vertical" : ""}"><video controls preload="none" playsinline ${p.poster ? `poster="${esc(path(p.poster))}"` : ""} src="${esc(path(p.video))}"></video></div>`
-      : yt ? `<div class="stage-video"><div class="ratio" data-id="${yt}" role="button" tabindex="0" aria-label="Play ${esc(p.title)}"><img loading="lazy" src="${thumb(yt, "maxresdefault")}" onerror="this.src='${thumb(yt)}'" alt=""><span class="play"></span></div></div>` : "";
-    const program = (p.program || []).filter((x) => x.title);
-    const performers = (p.performers || []).filter((x) => x.name);
-    const place = [p.venue, p.city].filter(Boolean).join(", ");
+  const years = [...new Set(MEDIA.map((v) => v.year).filter(Boolean))].sort((a, b) => b - a);
+  let curYear = years[0] || "All";
+  const card = (v) => {
+    const img = v.poster ? path(v.poster) : v.yt ? thumb(v.yt) : "";
+    const place = [v.venue, v.city].filter(Boolean).join(", ");
     return `
-      <article class="stage-card reveal ${vertical ? "is-vertical" : ""}">
-        ${media}
-        <div class="stage-info">
-          <h3 class="stage-title">${esc(p.title)}</h3>
-          ${p.date || place ? `<p class="stage-meta">${esc([dotDate(p.date), place].filter(Boolean).join("  ·  "))}</p>` : ""}
-          ${p.description ? `<p class="stage-desc">${esc(p.description)}</p>` : ""}
-          ${program.length ? `<div class="stage-block"><h4>Program</h4><ul>${program.map((x) => `<li><em>${esc(x.title)}</em>${x.composer ? ` <span>— ${esc(x.composer)}</span>` : ""}</li>`).join("")}</ul></div>` : ""}
-          ${performers.length ? `<div class="stage-block"><h4>With</h4><ul>${performers.map((x) => `<li>${esc(x.name)}${x.role ? ` <span>· ${esc(x.role)}</span>` : ""}</li>`).join("")}</ul></div>` : ""}
-        </div>
+      <article class="m-card" data-media="${v._i}" role="button" tabindex="0" aria-label="Play ${esc(v.title)}">
+        <div class="ratio">${img ? `<img loading="lazy" src="${esc(img)}" alt="">` : ""}<span class="play"></span></div>
+        <h3 class="m-title">${esc(v.title)}</h3>
+        ${v.subtitle ? `<p class="m-sub">${esc(v.subtitle)}</p>` : ""}
+        <p class="m-meta">${esc([dotDate(v.date), place].filter(Boolean).join("  ·  "))}</p>
       </article>`;
   };
-  const perfCards = STAGE.filter((p) => p.section !== "Studio");
-  const studioCards = STAGE.filter((p) => p.section === "Studio");
-  $("#stagePerf").innerHTML = perfCards.map(stageCard).join("");
-  $("#stageStudio").innerHTML = studioCards.map(stageCard).join("");
-  $("#studioHead").hidden = !studioCards.length;
+  const renderMedia = () => {
+    $("#yearFilter").innerHTML = [...years, "All"].map((y) => `<button class="${y === curYear ? "on" : ""}" data-year="${y}">${y}</button>`).join("");
+    const list = MEDIA.filter((v) => curYear === "All" || v.year === curYear);
+    $("#mediaGrid").innerHTML = list.map(card).join("");
+  };
+  renderMedia();
+  $("#yearFilter").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; curYear = b.dataset.year; renderMedia(); });
 
-  // YouTube recordings — 간결한 리스트
-  $("#recList").innerHTML = VIDEOS.map((v) => `
-    <div class="rec" data-id="${esc(v.id)}" role="button" tabindex="0" aria-label="Play ${esc(v.title)}">
-      <div class="rec-thumb"><img loading="lazy" src="${thumb(v.id, "mqdefault")}" alt=""><span class="play sm"></span></div>
-      <div class="rec-text">
-        <div class="rec-title">${esc(v.title)}</div>
-        <div class="rec-src">${esc(v.source || "")}</div>
-      </div>
-      <div class="rec-year">${esc(v.year || "")}</div>
-    </div>`).join("");
-
-  const vModal = $("#videoModal"), frame = $("#modalFrame");
-  const openVideo = (id) => {
+  const vModal = $("#videoModal"), frame = $("#modalFrame"), mVideo = $("#modalVideo");
+  const openMedia = (v) => {
     pauseBgm();
-    document.querySelectorAll("video").forEach((v) => v.pause());
-    frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    if (v.video) { frame.hidden = true; mVideo.hidden = false; mVideo.src = path(v.video); if (v.poster) mVideo.poster = path(v.poster); mVideo.play().catch(() => {}); }
+    else { mVideo.hidden = true; frame.hidden = false; frame.src = `https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0`; }
+    const program = (v.program || []).filter((x) => x.title), performers = (v.performers || []).filter((x) => x.name);
+    const place = [v.venue, v.city].filter(Boolean).join(", ");
+    $("#modalInfo").innerHTML = `
+      <h3>${esc(v.title)}</h3>
+      <p class="mi-meta">${esc([v.subtitle, dotDate(v.date), place].filter(Boolean).join("  ·  "))}</p>
+      ${v.description ? `<p class="mi-desc">${esc(v.description)}</p>` : ""}
+      ${program.length ? `<p class="mi-line"><span>Program</span> ${program.map((x) => esc(x.title) + (x.composer ? ` — ${esc(x.composer)}` : "")).join(" / ")}</p>` : ""}
+      ${performers.length ? `<p class="mi-line"><span>With</span> ${performers.map((x) => esc(x.name) + (x.role ? ` (${esc(x.role)})` : "")).join(", ")}</p>` : ""}`;
     vModal.hidden = false; document.body.style.overflow = "hidden";
   };
   const closeModals = () => {
     const wasVideo = !vModal.hidden;
-    vModal.hidden = true; frame.src = ""; pModal.hidden = true; document.body.style.overflow = "";
+    vModal.hidden = true; frame.src = ""; mVideo.pause(); mVideo.removeAttribute("src"); mVideo.load();
+    pModal.hidden = true; document.body.style.overflow = "";
     if (wasVideo) setTimeout(resumeBgm, 300);
   };
-  document.addEventListener("click", (e) => { const t = e.target.closest("[data-id]"); if (t) openVideo(t.dataset.id); });
+  document.addEventListener("click", (e) => { const t = e.target.closest("[data-media]"); if (t) openMedia(MEDIA[+t.dataset.media]); });
   document.addEventListener("keydown", (e) => {
-    const t = e.target.closest && e.target.closest("[data-id]");
-    if (t && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openVideo(t.dataset.id); }
+    const t = e.target.closest && e.target.closest("[data-media]");
+    if (t && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openMedia(MEDIA[+t.dataset.media]); }
   });
 
   /* ── GALLERY (Stage) ─────────────── */

@@ -41,26 +41,22 @@ content:
           - { name: ticketUrl, label: "티켓 예매 링크", type: string }
           - { name: note, label: "메모", type: string }
 
-  - name: stage
-    label: "공연 영상 (Media · 영상만, 가로 영상)"
+  - name: media
+    label: "영상 (Media · 연도별 자동 분류)"
     type: file
-    path: content/stage.json
+    path: content/media.json
     format: json
     fields:
-      - name: performances
-        label: "공연 (위에서부터 순서대로 표시)"
+      - name: videos
+        label: "영상 (같은 연도 안에서 위에서부터 순서대로 표시)"
         type: object
         list: true
         fields:
-          - name: section
-            label: "구분"
-            type: select
-            options:
-              values: ["Performance", "Studio"]
-          - { name: title, label: "공연 제목", type: string, required: true }
-          - { name: date, label: "날짜 (예: 2026-05 또는 2026-05-14)", type: string }
+          - { name: title, label: "제목 (곡명 또는 공연명)", type: string, required: true }
+          - { name: subtitle, label: "부제 (작품 · 작곡가)", type: string }
+          - { name: date, label: "날짜 (예: 2026, 2026-05, 2026-05-14) — 연도 탭 분류 기준", type: string, required: true }
           - { name: venue, label: "공연 장소", type: string }
-          - { name: city, label: "도시", type: string }
+          - { name: city, label: "도시 / 나라", type: string }
           - { name: description, label: "설명", type: text }
           - name: program
             label: "곡 목록"
@@ -76,35 +72,9 @@ content:
             fields:
               - { name: name, label: "이름", type: string }
               - { name: role, label: "역할 (Piano, Soprano 등)", type: string }
-          - { name: video, label: "영상 파일 (가로 영상만, 50MB 이하 권장)", type: file, options: { media: videos } }
-          - { name: youtube, label: "또는 YouTube 링크 (영상 파일 대신)", type: string }
-          - { name: poster, label: "영상 썸네일 이미지", type: image, options: { media: images } }
-
-  - name: videos
-    label: "YouTube 녹화 목록 (Recordings)"
-    type: file
-    path: content/videos.json
-    format: json
-    fields:
-      - name: videos
-        label: "영상"
-        type: object
-        list: true
-        fields:
-          - { name: url, label: "YouTube 링크", type: string, required: true }
-          - { name: year, label: "연도", type: number, required: true }
-          - name: category
-            label: "분류"
-            type: select
-            required: true
-            options:
-              values: ["Opera", "Art Song", "Musical Theatre", "Concert", "Competition"]
-          - { name: title, label: "곡 제목", type: string, required: true }
-          - { name: source, label: "작품 · 작곡가 (예: Le Nozze di Figaro · Mozart)", type: string }
-          - { name: piano, label: "반주자", type: string }
-          - { name: event, label: "대회 / 공연명 (카드에 태그로 표시)", type: string }
-          - { name: note, label: "메모", type: string }
-          - { name: featured, label: "대표 영상으로 표시", type: boolean }
+          - { name: youtube, label: "YouTube 링크", type: string }
+          - { name: video, label: "또는 영상 파일 (가로 영상만, 50MB 이하)", type: file, options: { media: videos } }
+          - { name: poster, label: "썸네일 이미지 (영상 파일일 때)", type: image, options: { media: images } }
 
   - name: gallery
     label: "사진 (Gallery · 같은 배경은 1장만)"
@@ -150,7 +120,7 @@ content:
           - { name: role, label: "배역", type: string, required: true }
           - { name: opera, label: "작품", type: string, required: true }
           - { name: composer, label: "작곡가", type: string }
-          - { name: company, label: "단체 / 페스티벌", type: string }
+          - { name: company, label: "주최 (Presented by)", type: string }
           - { name: year, label: "연도", type: number }
           - { name: note, label: "비고 (Cover, Scene 등)", type: string }
 

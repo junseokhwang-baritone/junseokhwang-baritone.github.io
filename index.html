@@ -92,7 +92,7 @@
       <h2>Opera Roles</h2>
       <div class="table-wrap">
         <table class="roles">
-          <thead><tr><th>Role</th><th>Opera</th><th>Company</th><th>Year</th></tr></thead>
+          <thead><tr><th>Role</th><th>Opera</th><th>Presented by</th><th>Year</th></tr></thead>
           <tbody id="rolesBody"></tbody>
         </table>
       </div>
@@ -114,13 +114,8 @@
       <p class="eyebrow">Watch &amp; Listen</p>
       <h2>Media</h2>
 
-      <div id="stagePerf" class="stage-list"></div>
-
-      <div class="subhead" id="studioHead" hidden><h3>Studio</h3></div>
-      <div id="stageStudio" class="stage-list studio"></div>
-
-      <div class="subhead"><h3>Recordings</h3></div>
-      <div class="rec-list" id="recList"></div>
+      <div class="filter-row" id="yearFilter" role="tablist" aria-label="Filter by year"></div>
+      <div class="media-grid" id="mediaGrid"></div>
 
       <p class="center more">
         <a class="btn-outline" data-link="youtube" href="https://www.youtube.com/@junseokhwang5029" target="_blank" rel="noopener">View YouTube Channel</a>
@@ -169,7 +164,7 @@
   <!-- Video modal -->
   <div class="modal" id="videoModal" hidden>
     <button class="modal-close" aria-label="Close">&times;</button>
-    <div class="modal-body video"><div class="ratio"><iframe id="modalFrame" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>
+    <div class="modal-body video"><div class="ratio"><iframe id="modalFrame" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen hidden></iframe><video id="modalVideo" controls playsinline hidden></video></div><div class="modal-info" id="modalInfo"></div></div>
   </div>
 
   <!-- Photo lightbox -->
