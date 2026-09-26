@@ -40,6 +40,9 @@ content:
           - { name: city, label: "도시", type: string }
           - { name: ticketUrl, label: "티켓 예매 링크", type: string }
           - { name: note, label: "메모", type: string }
+          - { name: published, label: "공개 (체크하면 사이트에 표시)", type: boolean }
+          - { name: source, label: "AVA 공연 페이지 (자동 수집)", type: string }
+          - { name: auto, label: "자동 수집된 공연", type: boolean, hidden: true }
 
   - name: media
     label: "영상 (Media · Concert / Studio)"

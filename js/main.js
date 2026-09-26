@@ -21,7 +21,7 @@ window.siteEntered = Promise.resolve();
   const fmtTime = (t) => { const m = String(t || "").match(/^(\d{1,2}):(\d{2})$/); if (!m) return t || ""; const h = +m[1]; return `${h % 12 || 12}:${m[2]} ${h < 12 ? "AM" : "PM"}`; };
   const dotDate = (d) => String(d || "").trim().split("-").filter(Boolean).map((x, i) => (i ? pad(+x) : x)).join(". ");
 
-  const PERFORMANCES = perfData.performances || [];
+  const PERFORMANCES = (perfData.performances || []).filter((p) => p.published !== false); // 숨김 초안은 표시 안 함
   const ROLES = rolesData.roles || [];
   const AWARDS = awardsData.awards || [];
   // 갤러리: 날짜 최신순. "위치 고정(몇 번째)"이 있는 사진은 그 자리에 끼워 넣음

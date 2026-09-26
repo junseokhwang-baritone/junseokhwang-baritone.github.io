@@ -9,7 +9,8 @@
       "venue": "Kimmel Center for the Performing Arts",
       "city": "Philadelphia, PA",
       "ticketUrl": "https://www.ensembleartsphilly.org/rent-our-spaces/special-events-and-performances/giargiari-bel-canto-competition-2",
-      "note": "AVA's annual singing competition featuring the Resident Artists"
+      "note": "AVA's annual singing competition featuring the Resident Artists",
+      "published": true
     },
     {
       "date": "2026-09-25",
@@ -20,7 +21,8 @@
       "venue": "The Church of the Holy Trinity",
       "city": "Philadelphia, PA",
       "ticketUrl": "https://my.avaopera.org/107062/107065",
-      "note": "Debut recital of AVA's new Resident Artists · Piano: José Meléndez"
+      "note": "Debut recital of AVA's new Resident Artists · Piano: José Meléndez",
+      "published": true
     },
     {
       "date": "2026-09-14",
@@ -28,7 +30,97 @@
       "presenter": "",
       "venue": "",
       "city": "",
-      "note": ""
+      "note": "",
+      "published": true
+    },
+    {
+      "date": "2027-05-13",
+      "time": "19:30",
+      "title": "Farewell Recital",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Church of the Holy Trinity",
+      "city": "",
+      "ticketUrl": "https://my.avaopera.org/107062/107094",
+      "note": "",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/farewell-recital-2026-27"
+    },
+    {
+      "date": "2027-02-13",
+      "time": "19:30",
+      "title": "Il tabarro / Gianni Schicchi",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Academy of Vocal Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://avaopera.org/event/il-tabarro-gianni-schicchi-2026-27",
+      "note": "4 performances",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/il-tabarro-gianni-schicchi-2026-27",
+      "endDate": "2027-02-20"
+    },
+    {
+      "date": "2027-04-17",
+      "time": "19:30",
+      "title": "Il trovatore",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Academy of Vocal Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://avaopera.org/event/il-trovatore-2026-27",
+      "note": "5 performances · also at The Haverford School",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/il-trovatore-2026-27",
+      "endDate": "2027-05-04"
+    },
+    {
+      "date": "2026-11-10",
+      "time": "19:30",
+      "title": "L’elisir d’amore",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "Academy of Vocal Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://avaopera.org/event/lelisir-damore-2026-27",
+      "note": "6 performances · also at Delaware Valley University, Lehigh University, The Haverford School",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/lelisir-damore-2026-27",
+      "endDate": "2026-12-01"
+    },
+    {
+      "date": "2026-12-09",
+      "time": "19:30",
+      "title": "Métamorphoses: Three Centuries of French Imagination",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Academy of Vocal Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://avaopera.org/event/metamorphoses-2026-27",
+      "note": "2 performances",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/metamorphoses-2026-27",
+      "endDate": "2026-12-11"
+    },
+    {
+      "date": "2027-03-16",
+      "time": "19:30",
+      "title": "Tapestry: Threads of American Song",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Academy of Vocal Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://avaopera.org/event/tapestry-2026-27",
+      "note": "2 performances",
+      "published": false,
+      "auto": true,
+      "source": "https://avaopera.org/event/tapestry-2026-27",
+      "endDate": "2027-03-18"
     }
   ]
 }
