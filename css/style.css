@@ -58,7 +58,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; background: var(--black); color: var(--white); }
 .hero-img {
   position: absolute; inset: 0;
-  background: url("../images/hero-gala.jpg") 25% 22% / cover no-repeat;
+  background: url("../images/hero-recital.jpg") 40% 30% / cover no-repeat;
   filter: grayscale(1) contrast(1.08) brightness(.8);
   transform: scale(1.04);
   animation: heroZoom 14s ease-out forwards;
@@ -273,7 +273,7 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
   .awards .result { font-size: 1.35rem; }
   .bio p { font-size: 1.18rem; }
   .hero-text { left: 20px; bottom: 16vh; }
-  .hero-img { background-position: 54% 22%; }
+  .hero-img { background-position: 60% 30%; }
   .hero-overlay { background: linear-gradient(0deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.2) 100%); }
 }
 @media (max-width: 560px) {
@@ -327,15 +327,12 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 .media-more { margin-top: 56px; cursor: pointer; background: none; }
 .media-more[hidden] { display: none; }
 
-/* ── ABOUT: 원형 프로필 사진 — 검은 첫 화면과 흰 About 경계선에 걸치게 ── */
-#about { position: relative; }
-#about > .container { position: relative; }
-.about-photo { position: absolute; z-index: 5; right: 0; width: 240px; height: 240px;
-  top: calc(-120px - 120px); /* 섹션 위 여백 + 사진 절반 */
-  border-radius: 50%; object-fit: cover; object-position: 50% 35%;
-  border: 6px solid var(--white); box-shadow: 0 12px 40px rgba(0,0,0,.35);
-  filter: grayscale(1); transition: filter .6s ease; }
+/* ── ABOUT: 원형 프로필 사진 ─────── */
+.about-head { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.about-head h2 { margin-bottom: 56px; }
+.about-photo { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; flex-shrink: 0; margin-bottom: 40px;
+  filter: grayscale(1); transition: filter .6s ease; box-shadow: 0 0 0 1px var(--gray-2), 0 0 0 7px var(--white), 0 0 0 8px var(--gray-2); }
 .about-photo:hover { filter: none; }
-@media (max-width: 820px) {
-  .about-photo { width: 160px; height: 160px; top: calc(-88px - 80px); border-width: 5px; }
+@media (max-width: 560px) {
+  .about-photo { width: 112px; height: 112px; margin-bottom: 36px; box-shadow: 0 0 0 1px var(--gray-2), 0 0 0 5px var(--white), 0 0 0 6px var(--gray-2); }
 }
