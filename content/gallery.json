@@ -82,8 +82,9 @@
     },
     {
       "image": "images/life/studio-visit.jpg",
-      "caption": "",
-      "date": "2026-07-22"
+      "caption": "With Renée Fleming",
+      "date": "2026-07-22",
+      "pinned": true
     }
   ]
 }

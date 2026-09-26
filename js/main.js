@@ -24,9 +24,9 @@ window.siteEntered = Promise.resolve();
   const PERFORMANCES = perfData.performances || [];
   const ROLES = rolesData.roles || [];
   const AWARDS = awardsData.awards || [];
-  // 갤러리: 날짜 최신순 (날짜 없는 사진은 맨 뒤)
-  const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption, date: g.date || "" }))
-    .sort((a, b) => b.date.localeCompare(a.date));
+  // 갤러리: "맨 위 고정" 사진 먼저, 그다음 날짜 최신순 (날짜 없는 사진은 맨 뒤)
+  const GALLERY = (galleryData.photos || []).filter((g) => g.image).map((g) => ({ src: path(g.image), caption: g.caption, date: g.date || "", pinned: !!g.pinned }))
+    .sort((a, b) => (b.pinned - a.pinned) || b.date.localeCompare(a.date));
   const MEDIA = (mediaData.videos || []).filter((v) => v.video || ytId(v.youtube)).map((v, i) => ({ ...v, _i: i, yt: ytId(v.youtube), year: String(v.date || "").slice(0, 4) }));
 
   /* ── BACKGROUND MUSIC ────────────── */
