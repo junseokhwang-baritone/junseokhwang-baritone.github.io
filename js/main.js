@@ -204,13 +204,19 @@
         <p class="m-meta">${esc([dotDate(v.date), place].filter(Boolean).join("  ·  "))}</p>
       </article>`;
   };
+  const PAGE = 9; // 탭마다 처음엔 9개만, 나머지는 View more
+  let shown = PAGE;
   const renderMedia = () => {
     $("#yearFilter").innerHTML = cats.map((c) => `<button class="${c === curCat ? "on" : ""}" data-cat="${c}">${c}</button>`).join("");
     const list = MEDIA.filter((v) => catOf(v) === curCat).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
-    $("#mediaGrid").innerHTML = list.map(card).join("");
+    $("#mediaGrid").innerHTML = list.slice(0, shown).map(card).join("");
+    const more = $("#mediaMore");
+    more.hidden = list.length <= shown;
+    more.textContent = `View more (${list.length - shown})`;
   };
+  $("#mediaMore").addEventListener("click", () => { shown += PAGE; renderMedia(); });
   renderMedia();
-  $("#yearFilter").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; curCat = b.dataset.cat; renderMedia(); });
+  $("#yearFilter").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; curCat = b.dataset.cat; shown = PAGE; renderMedia(); });
 
   const vModal = $("#videoModal"), frame = $("#modalFrame"), mVideo = $("#modalVideo");
   const openMedia = (v) => {

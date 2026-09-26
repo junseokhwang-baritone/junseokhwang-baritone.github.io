@@ -152,44 +152,6 @@
     },
     {
       "category": "Studio",
-      "title": "Vaga luna che inargenti",
-      "subtitle": "Bellini",
-      "date": "2025-12",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [
-        {
-          "name": "Soojin Jeong",
-          "role": "Piano"
-        }
-      ],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=HyHOCfaD_8w",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
-      "title": "Rast",
-      "subtitle": "Winterreise · Schubert",
-      "date": "2025-12",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [
-        {
-          "name": "Soojin Jeong",
-          "role": "Piano"
-        }
-      ],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=GAAzEeJCCH8",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
       "title": "Largo al factotum",
       "subtitle": "Il Barbiere di Siviglia · Rossini",
       "date": "2025-11",
@@ -209,34 +171,6 @@
     },
     {
       "category": "Studio",
-      "title": "Papagena! Papagena!",
-      "subtitle": "Die Zauberflöte · Mozart",
-      "date": "2025-10",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=sa-7g9V9pHM",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
-      "title": "Phidylé",
-      "subtitle": "Duparc",
-      "date": "2025-10",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=0jDugjP0zyY",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
       "title": "Cruda, funesta smania",
       "subtitle": "Lucia di Lammermoor · Donizetti",
       "date": "2025-10",
@@ -247,20 +181,6 @@
       "performers": [],
       "video": "",
       "youtube": "https://www.youtube.com/watch?v=YJM9VqZ1kY0",
-      "poster": ""
-    },
-    {
-      "category": "Studio",
-      "title": "Barry Is Going to Prom",
-      "subtitle": "The Prom",
-      "date": "2025-10",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "",
-      "youtube": "https://www.youtube.com/watch?v=q1J7PRh6VZk",
       "poster": ""
     }
   ]

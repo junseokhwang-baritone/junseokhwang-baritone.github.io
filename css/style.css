@@ -324,3 +324,5 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 .footer-aff a:hover { color: #ccc; }
 .bgm.hint { animation: bgmHint 1.8s ease-in-out infinite; opacity: 1; }
 @keyframes bgmHint { 0%, 100% { box-shadow: 0 1px 6px rgba(0,0,0,.12); } 50% { box-shadow: 0 0 0 7px rgba(0,0,0,.08); } }
+.media-more { margin-top: 56px; cursor: pointer; background: none; }
+.media-more[hidden] { display: none; }
