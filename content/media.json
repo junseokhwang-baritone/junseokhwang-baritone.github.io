@@ -35,7 +35,7 @@
     },
     {
       "category": "Studio & Rehearsal",
-      "title": "Summer Performance",
+      "title": "Rehearsal",
       "subtitle": "",
       "date": "2026-08",
       "venue": "",
@@ -102,34 +102,6 @@
       "video": "videos/studio-c.mp4",
       "youtube": "",
       "poster": "images/posters/studio-c-thumb2.jpg"
-    },
-    {
-      "category": "Studio & Rehearsal",
-      "title": "Pavilion Recital",
-      "subtitle": "",
-      "date": "2026-07",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "videos/20260710_065738.mp4",
-      "youtube": "",
-      "poster": "images/posters/20260710_065738-thumb.jpg"
-    },
-    {
-      "category": "Studio & Rehearsal",
-      "title": "Studio Session",
-      "subtitle": "",
-      "date": "2026-09",
-      "venue": "",
-      "city": "",
-      "description": "",
-      "program": [],
-      "performers": [],
-      "video": "videos/studio-c2.mp4",
-      "youtube": "",
-      "poster": "images/posters/studio-c2-thumb2.jpg"
     },
     {
       "category": "Studio & Rehearsal",
