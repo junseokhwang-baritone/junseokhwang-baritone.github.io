@@ -17,6 +17,7 @@
   const parse = (d) => { const [y, m, dd] = String(d).split("-").map(Number); return new Date(y, (m || 1) - 1, dd || 1); };
   const fmtDate = (d) => { if (!d) return ""; const x = parse(d); return `${MONTHS_FULL[x.getMonth()]} ${x.getDate()}, ${x.getFullYear()}`; };
   const pad = (n) => String(n).padStart(2, "0");
+  const fmtTime = (t) => { const m = String(t || "").match(/^(\d{1,2}):(\d{2})$/); if (!m) return t || ""; const h = +m[1]; return `${h % 12 || 12}:${m[2]} ${h < 12 ? "AM" : "PM"}`; };
   const dotDate = (d) => String(d || "").trim().split("-").filter(Boolean).map((x, i) => (i ? pad(+x) : x)).join(". ");
 
   const PERFORMANCES = perfData.performances || [];
@@ -133,7 +134,7 @@
     const d = parse(p.date);
     const e = p.endDate ? parse(p.endDate) : null;
     const range = e ? `<span class="range">–${e.getMonth() === d.getMonth() ? e.getDate() : MONTHS[e.getMonth()] + " " + e.getDate()}</span>` : "";
-    const meta = [p.presenter, [p.venue, p.city].filter(Boolean).join(", "), p.time].filter(Boolean).map(esc).join(" · ");
+    const meta = [p.presenter, [p.venue, p.city].filter(Boolean).join(", "), fmtTime(p.time)].filter(Boolean).map(esc).join(" · ");
     const actions = withActions ? `
       <div class="event-actions">
         ${p.ticketUrl ? `<a class="btn" href="${esc(p.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>` : ""}
