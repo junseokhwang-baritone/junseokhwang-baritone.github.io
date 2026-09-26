@@ -21,7 +21,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260926172957">
+  <script>
+    /* 최신 버전 확인: 브라우저에 저장된 예전 페이지면 자동으로 새로 불러옴 (주소는 그대로 유지) */
+    (function () {
+      var PAGE_VERSION = "20260926173223";
+      try {
+        var u = new URL(location.href);
+        if (u.searchParams.has("_v")) { u.searchParams.delete("_v"); history.replaceState(null, "", u.pathname + (u.search || "") + u.hash); }
+        fetch("version.txt?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (v) {
+          v = (v || "").trim();
+          if (!v || v === PAGE_VERSION || sessionStorage.getItem("reloadedFor") === v) return;
+          sessionStorage.setItem("reloadedFor", v);
+          var n = new URL(location.href); n.searchParams.set("_v", v); location.replace(n.toString());
+        }).catch(function () {});
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=20260926173223">
 </head>
 <body>
 
@@ -191,7 +207,7 @@
     <button class="modal-nav next" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260926172957"></script>
-  <script src="js/birthday.js?v=20260926172957"></script>
+  <script src="js/main.js?v=20260926173223"></script>
+  <script src="js/birthday.js?v=20260926173223"></script>
 </body>
 </html>
