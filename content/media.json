@@ -1,14 +1,19 @@
 {
   "videos": [
     {
-      "title": "Evening Concert",
+      "title": "New Artist Recital",
       "subtitle": "",
-      "date": "2026",
-      "venue": "",
-      "city": "",
-      "description": "",
+      "date": "2026-09-25",
+      "venue": "The Church of the Holy Trinity",
+      "city": "Philadelphia",
+      "description": "Debut recital of the Academy of Vocal Arts' new Resident Artists.",
       "program": [],
-      "performers": [],
+      "performers": [
+        {
+          "name": "José Meléndez",
+          "role": "Piano"
+        }
+      ],
       "video": "videos/concert-a.mp4",
       "youtube": "",
       "poster": "images/posters/concert-a.jpg"

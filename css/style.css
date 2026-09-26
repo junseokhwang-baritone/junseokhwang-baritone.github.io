@@ -320,3 +320,6 @@ h3 { font-size: .72rem; font-weight: 500; letter-spacing: .25em; text-transform:
 .mi-line span { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: #888; margin-right: 8px; }
 @media (max-width: 960px) { .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .media-grid { grid-template-columns: 1fr; } }
+.footer-aff { margin-bottom: 8px; color: #888; }
+.footer-aff a { border-bottom: 1px solid #444; }
+.footer-aff a:hover { color: #ccc; }

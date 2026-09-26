@@ -1,6 +1,28 @@
 {
   "performances": [
     {
+      "date": "2026-10-03",
+      "time": "19:30",
+      "title": "Giargiari Bel Canto Competition",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "Kimmel Center for the Performing Arts",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://www.ensembleartsphilly.org/rent-our-spaces/special-events-and-performances/giargiari-bel-canto-competition-2",
+      "note": "AVA's annual singing competition featuring the Resident Artists"
+    },
+    {
+      "date": "2026-09-25",
+      "time": "19:30",
+      "title": "New Artist Recital",
+      "role": "",
+      "presenter": "Academy of Vocal Arts",
+      "venue": "The Church of the Holy Trinity",
+      "city": "Philadelphia, PA",
+      "ticketUrl": "https://my.avaopera.org/107062/107065",
+      "note": "Debut recital of AVA's new Resident Artists · Piano: José Meléndez"
+    },
+    {
       "date": "2026-09-14",
       "title": "Salon Recital",
       "presenter": "",
