@@ -1,11 +1,14 @@
 /*
- * 9월 29일(준석이 생일)에 접속하면 풍선 + 폭죽 + "Happy Birthday!"
+ * 9월 29일(준석이 생일)부터 일주일(~10월 5일) 동안 접속하면 풍선 + 폭죽 + "Happy Birthday!"
  * 미리보기: 주소 뒤에 ?birthday=1
  */
 (function () {
   const now = new Date();
   const force = new URLSearchParams(location.search).has("birthday");
-  if (!force && !(now.getMonth() === 8 && now.getDate() === 29)) return;
+  // 생일(9/29)부터 7일간 = 9월 29일 ~ 10월 5일
+  const y = now.getFullYear(), today = new Date(y, now.getMonth(), now.getDate());
+  const inWeek = today >= new Date(y, 8, 29) && today <= new Date(y, 9, 5);
+  if (!force && !inWeek) return;
 
   const reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
