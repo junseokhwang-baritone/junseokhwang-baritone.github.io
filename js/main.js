@@ -52,10 +52,12 @@
     const kick = (e) => {
       if (e.target.closest && e.target.closest("#bgmToggle, [data-media], video")) return;
       if (bgm.wanted && !anyVideoPlaying()) bgm.play();
-      ["pointerdown", "keydown"].forEach((t) => document.removeEventListener(t, kick, true));
+      ["pointerdown", "touchend", "keydown"].forEach((t) => document.removeEventListener(t, kick, true));
     };
-    ["pointerdown", "keydown"].forEach((t) => document.addEventListener(t, kick, true));
-    bgm.play && bgm.wanted && bgm.el.play().catch(() => {});
+    ["pointerdown", "touchend", "keydown"].forEach((t) => document.addEventListener(t, kick, true));
+    // 접속하자마자 자동 재생 시도 — 브라우저가 막으면 버튼이 살짝 깜빡이고, 첫 터치/클릭 때 재생
+    bgm.el.addEventListener("play", () => bgmBtn.classList.remove("hint"));
+    if (bgm.wanted) bgm.el.play().catch(() => bgmBtn.classList.add("hint"));
   }
   const anyVideoPlaying = () => [...document.querySelectorAll("video")].some((v) => !v.paused) || !$("#videoModal").hidden;
   const pauseBgm = () => { if (bgm.el) bgm.el.pause(); };

@@ -27,6 +27,46 @@
     {
       "image": "images/life/mirror.jpg",
       "caption": "Suit up"
+    },
+    {
+      "image": "images/life/dinner-with-friends.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/family.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/hanok.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/art-gallery.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/cabin.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/sunset-terrace.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/costume-fitting.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/rehearsal-room.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/studio-visit.jpg",
+      "caption": ""
+    },
+    {
+      "image": "images/life/portrait-studio.jpg",
+      "caption": ""
     }
   ]
 }
