@@ -138,8 +138,8 @@ def main():
             "presenter": "Academy of Vocal Arts",
             "venue": venues[0] if venues else "",
             "city": "Philadelphia, PA" if (venues and "Academy of Vocal Arts" in venues[0]) else "",
-                # 티켓 버튼은 해당 공연 예매 링크로 바로 연결 (여러 날 공연은 첫 공연 예매 링크, 없으면 AVA 공연 페이지)
-            "ticketUrl": first["ticket"] or url + "/",
+                # 티켓 버튼은 공연 정보 페이지로 연결 (그 페이지 안에 날짜별 예매 버튼이 있음)
+            "ticketUrl": url + "/",
             "note": "",
             "published": cast,
             "auto": True,
