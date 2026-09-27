@@ -138,8 +138,8 @@ def main():
             "presenter": "Academy of Vocal Arts",
             "venue": venues[0] if venues else "",
             "city": "Philadelphia, PA" if (venues and "Academy of Vocal Arts" in venues[0]) else "",
-            # 한 번 공연은 해당 날짜 티켓, 여러 번 공연은 날짜별 티켓이 모두 있는 AVA 공연 페이지로 연결
-            "ticketUrl": first["ticket"] if len(shows) == 1 and first["ticket"] else url,
+                # 한 번 공연이고 AVA 자체 예매 링크면 바로 연결, 그 외(외부 예매 사이트·여러 날 공연)는 AVA 공연 페이지로 연결
+            "ticketUrl": first["ticket"] if len(shows) == 1 and "my.avaopera.org" in first["ticket"] else url + "/",
             "note": "",
             "published": cast,
             "auto": True,
