@@ -1,0 +1,26 @@
+# 관리자 화면(Pages CMS)에서 누가 사진·영상·글을 고치면 GitHub 이슈(알림 메일)로 알려줌
+#  - 무엇이 바뀌었는지 전/후 비교 링크 포함
+name: CMS edit notice
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  notify:
+    if: contains(join(github.event.commits.*.message, ' '), '(Pages CMS)')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open notice issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMITS: ${{ toJSON(github.event.commits) }}
+          COMPARE: ${{ github.event.compare }}
+        run: |
+          body=$(echo "$COMMITS" | jq -r '.[] | select(.message | contains("(Pages CMS)")) | "- \(.message | split("\n")[0])  \n  \(.url)"')
+          printf '관리자 화면에서 사이트 내용이 수정됐어요.\n\n%s\n\n전체 변경 비교: %s\n\n사이트: https://junseokhwang-baritone.github.io/\n' "$body" "$COMPARE" > notice.md
+          gh issue create -R ${{ github.repository }} --title "✏️ 사이트 수정 알림 ($(TZ=Asia/Seoul date +%Y-%m-%d))" --body-file notice.md

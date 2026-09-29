@@ -1,5 +1,15 @@
 # Pages CMS 설정 — https://app.pagescms.org 에서 GitHub 계정으로 로그인하면 이 편집 화면이 나타납니다.
 # 이 저장소에 쓰기 권한(Collaborator)이 있는 사람만 편집·저장할 수 있습니다.
+# 이메일로 초대한 편집자(Pages CMS Collaborators)는 내용·사진·영상만 수정 가능 — 코드와 이 설정 파일은 못 건드림.
+
+settings:
+  commit:
+    identity: user          # 누가 고쳤는지 GitHub 기록에 이름·이메일이 남도록
+    templates:
+      create: "{userName} 추가: {path} (Pages CMS)"
+      update: "{userName} 수정: {path} (Pages CMS)"
+      delete: "{userName} 삭제: {path} (Pages CMS)"
+      rename: "{userName} 이름 변경: {oldPath} → {newPath} (Pages CMS)"
 
 media:
   - name: images
@@ -24,6 +34,7 @@ content:
     type: file
     path: content/performances.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: performances
         label: "공연"
@@ -49,6 +60,7 @@ content:
     type: file
     path: content/media.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: videos
         label: "영상"
@@ -90,6 +102,7 @@ content:
     type: file
     path: content/gallery.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: photos
         label: "사진"
@@ -106,6 +119,7 @@ content:
     type: file
     path: content/awards.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: awards
         label: "수상"
@@ -122,6 +136,7 @@ content:
     type: file
     path: content/roles.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: roles
         label: "배역"
@@ -140,6 +155,7 @@ content:
     type: file
     path: content/training.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - name: education
         label: "학력"
@@ -169,6 +185,7 @@ content:
     type: file
     path: content/site.json
     format: json
+    operations: { delete: false }   # 파일 통째 삭제 방지 (항목 하나씩 지우는 건 가능)
     fields:
       - { name: name, label: "이름 (영문)", type: string }
       - { name: nameKo, label: "이름 (한글)", type: string }
