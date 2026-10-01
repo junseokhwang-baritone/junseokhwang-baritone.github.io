@@ -24,7 +24,7 @@
   <script>
     /* 최신 버전 확인: 브라우저에 저장된 예전 페이지면 자동으로 새로 불러옴 (주소는 그대로 유지) */
     (function () {
-      var PAGE_VERSION = "20261002004129";
+      var PAGE_VERSION = "20261002004600";
       try {
         var u = new URL(location.href);
         if (u.searchParams.has("_v")) { u.searchParams.delete("_v"); history.replaceState(null, "", u.pathname + (u.search || "") + u.hash); }
@@ -37,7 +37,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=20261002004129">
+  <link rel="stylesheet" href="css/style.css?v=20261002004600">
 </head>
 <body>
 
@@ -72,15 +72,13 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container about-wrap">
-      <div class="about-title">
-        <p class="eyebrow">Biography</p>
-        <h2>About</h2>
-      </div>
       <!-- 프로필 사진 자동 넘김 (사진 목록은 content/site.json 의 profile) -->
       <figure class="about-slides" id="aboutSlides">
         <img class="on" src="images/profile/profile-1.jpg" alt="Junseok Hwang">
       </figure>
       <div class="about-text">
+      <p class="eyebrow">Biography</p>
+      <h2>About</h2>
       <div class="bio">
         <p>Korean baritone <strong>Junseok (Jason) Hwang</strong> is a Resident Artist at the <strong>Academy of Vocal Arts</strong> in Philadelphia and a 2026 <em>Renée Fleming Artist</em>.</p>
         <p>A 2023 graduate of <strong>The Juilliard School</strong>, where he studied with William Burden, he sang Nick Bottom in <em>A Midsummer Night's Dream</em>, Il Marito in <em>Amelia al Ballo</em> and Spinelloccio in <em>Gianni Schicchi</em>. He has also sung Papageno in <em>Die Zauberflöte</em> at the Hawaii Performing Arts Festival.</p>
@@ -210,6 +208,6 @@
     <button class="modal-nav next" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20261002004129"></script>
+  <script src="js/main.js?v=20261002004600"></script>
 </body>
 </html>
