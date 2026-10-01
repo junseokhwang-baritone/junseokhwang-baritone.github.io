@@ -5,5 +5,12 @@
   "email": "djhwang1234@gmail.com",
   "youtube": "https://www.youtube.com/@junseokhwang5029",
   "instagram": "https://www.instagram.com/jhwang929/",
-  "bgm": "audio/recital-2026-09-hq.m4a"
+  "bgm": "audio/recital-2026-09-hq.m4a",
+  "profile": [
+    "images/profile/profile-1.jpg",
+    "images/profile/profile-2.jpg",
+    "images/profile/profile-3.jpg",
+    "images/profile/profile-4.jpg",
+    "images/profile/profile-5.jpg"
+  ]
 }

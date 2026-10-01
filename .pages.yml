@@ -194,3 +194,4 @@ content:
       - { name: youtube, label: "YouTube 채널", type: string }
       - { name: instagram, label: "Instagram", type: string }
       - { name: bgm, label: "배경음악 파일 (비우면 음악 버튼이 숨겨짐)", type: file, options: { media: audio } }
+      - { name: profile, label: "About 프로필 사진 (자동으로 넘어감 · 위에서부터 순서대로 · 세로 사진 4:5 권장)", type: image, list: true, options: { media: images } }

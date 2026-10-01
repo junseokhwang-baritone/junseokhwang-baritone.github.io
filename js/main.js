@@ -34,6 +34,33 @@ window.siteEntered = Promise.resolve();
   })();
   const MEDIA = (mediaData.videos || []).filter((v) => v.video || ytId(v.youtube)).map((v, i) => ({ ...v, _i: i, yt: ytId(v.youtube), year: String(v.date || "").slice(0, 4) }));
 
+  /* ── ABOUT: 프로필 사진 자동 넘김 ────────────── */
+  // site.json 의 profile 목록 순서대로 4.5초마다 넘어감. 아래 막대를 누르면 해당 사진으로 이동
+  (() => {
+    const box = $("#aboutSlides");
+    const list = (SITE.profile || []).map((p) => path(p && p.image ? p.image : p)).filter(Boolean);
+    if (!box || !list.length) return;
+    box.innerHTML = list.map((src, i) => `<img src="${esc(src)}" alt="Junseok Hwang" ${i ? 'loading="lazy"' : 'class="on"'}>`).join("");
+    if (list.length < 2) return;
+    const imgs = [...box.querySelectorAll("img")];
+    const dots = document.createElement("div");
+    dots.className = "about-dots";
+    dots.innerHTML = list.map((_, i) => `<button aria-label="Photo ${i + 1}"${i ? "" : ' class="on"'}></button>`).join("");
+    box.appendChild(dots);
+    const btns = [...dots.children];
+    let cur = 0, timer;
+    const show = (n) => {
+      imgs[cur].classList.remove("on"); btns[cur].classList.remove("on");
+      cur = (n + imgs.length) % imgs.length;
+      imgs[cur].classList.add("on"); btns[cur].classList.add("on");
+      imgs[(cur + 1) % imgs.length].loading = "eager"; // 다음 사진 미리 불러오기
+    };
+    const start = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 4500); };
+    btns.forEach((b, i) => b.addEventListener("click", () => { show(i); start(); }));
+    document.addEventListener("visibilitychange", () => (document.hidden ? clearInterval(timer) : start()));
+    start();
+  })();
+
   /* ── BACKGROUND MUSIC ────────────── */
   // site.json 의 bgm 에 음원 경로를 넣으면 켜집니다. 영상 재생 시 자동으로 멈춥니다.
   const bgm = { el: null, wanted: false };
