@@ -2,6 +2,12 @@
   "awards": [
     {
       "year": "2026",
+      "competition": "",
+      "result": "Renée Fleming Artist",
+      "highlight": true
+    },
+    {
+      "year": "2026",
       "competition": "Cascais International Voice Competition",
       "result": "Semi-finalist & Special Contract Prize",
       "highlight": true
