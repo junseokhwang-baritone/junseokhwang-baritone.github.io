@@ -1,0 +1,31 @@
+# AVA 공연 확인(ava-sync)이 실패하면 10분 뒤 자동으로 다시 실행 (최대 2번 더)
+#  - GitHub 서버 쪽 일시 장애(실행 서버 배정 실패 등)로 실패하는 경우 대비
+name: AVA sync retry
+
+on:
+  workflow_run:
+    workflows: ["AVA schedule sync"]
+    types: [completed]
+  workflow_dispatch:          # 수동 테스트용: 다시 실행할 run id 입력
+    inputs:
+      run_id:
+        description: "다시 실행할 AVA schedule sync run id"
+        required: true
+
+permissions:
+  actions: write
+
+jobs:
+  retry:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'failure' && github.event.workflow_run.run_attempt < 3)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait, then rerun the failed sync
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id || inputs.run_id }}
+        run: |
+          [ "${{ github.event_name }}" = "workflow_dispatch" ] || sleep 600
+          gh run rerun "$RUN_ID" -R ${{ github.repository }}
